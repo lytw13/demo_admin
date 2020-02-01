@@ -1,0 +1,10 @@
+package com.lytw13.demo.service;
+
+import com.lytw13.demo.model.TbDictData;
+
+import java.util.List;
+
+public interface DictDataService {
+
+    List<TbDictData> getType(String type);
+}

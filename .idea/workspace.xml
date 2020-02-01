@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="28ed8e2d-e748-436d-bd1d-35fe05a562d8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true" />
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="demo_admin" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Tag Library Descriptor" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
+        <option name="localRepository" value="D:\Program Data\Maven Repository" />
+        <option name="mavenHome" value="D:/Program Files/Java/apache-maven-3.6.2" />
+        <option name="printErrorStackTraces" value="true" />
+        <option name="userSettingsFile" value="D:\Program Files\Java\apache-maven-3.6.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1WR05vGUKh67SgHmPV69N91bcFx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="ToolWindowSVN Properties.ShowToolbar" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jxr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ProgramCode\lytw13\demo_admin\demo_system\src\main\resources\templates" />
+      <recent name="D:\ProgramCode\lytw13\demo_admin\demo_system\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lytw13.demo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ProgramCode\lytw13\demo_admin\demo_web\src\main\resources\templates\dict" />
+      <recent name="D:\ProgramCode\lytw13\demo_admin\demo_web\src\main\resources\mapper" />
+      <recent name="D:\ProgramCode\lytw13\demo_admin\demo_common\src\main\java\com\lytw13\demo\model" />
+      <recent name="D:\ProgramCode\lytw13\demo_admin\demo_common\src\main\java\com\lytw13\demo" />
+      <recent name="D:\ProgramCode\lytw13\demo_admin\demo_web\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo_web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lytw13.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lytw13.demo.DemoApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.20696722" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\33353\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\ProgramCode\lytw13\demo_admin" />
+          <option name="myCopyRoot" value="D:\ProgramCode\lytw13\demo_admin" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\ProgramCode\lytw13\demo_admin" />
+          <option name="myCopyRoot" value="D:\ProgramCode\lytw13\demo_admin" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="28ed8e2d-e748-436d-bd1d-35fe05a562d8" name="Default Changelist" comment="" />
+      <created>1579096919772</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579096919772</updated>
+      <workItem from="1579096923437" duration="4166000" />
+      <workItem from="1579180554188" duration="56000" />
+      <workItem from="1579180629444" duration="1113000" />
+      <workItem from="1579183503874" duration="4048000" />
+      <workItem from="1579273220218" duration="11919000" />
+      <workItem from="1579353603254" duration="2903000" />
+      <workItem from="1579400510059" duration="13136000" />
+      <workItem from="1579436270632" duration="6912000" />
+      <workItem from="1579483847484" duration="4457000" />
+      <workItem from="1579489455931" duration="10360000" />
+      <workItem from="1579522879362" duration="7648000" />
+      <workItem from="1579570208700" duration="5698000" />
+      <workItem from="1579606426129" duration="85749000" />
+      <workItem from="1580436779146" duration="1890000" />
+      <workItem from="1580439500717" duration="16009000" />
+      <workItem from="1580465409673" duration="2914000" />
+      <workItem from="1580469837636" duration="7402000" />
+      <workItem from="1580486348256" duration="7111000" />
+      <workItem from="1580527169287" duration="15097000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1579097760558</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579097760558</updated>
+    </task>
+    <task id="LOCAL-00002">
+      <created>1579098723915</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579098723915</updated>
+    </task>
+    <task id="LOCAL-00003">
+      <created>1579099177941</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579099177941</updated>
+    </task>
+    <task id="LOCAL-00004">
+      <created>1579099398695</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579099398695</updated>
+    </task>
+    <task id="LOCAL-00005">
+      <created>1579185248428</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579185248428</updated>
+    </task>
+    <task id="LOCAL-00006">
+      <created>1579193935715</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1579193935715</updated>
+    </task>
+    <task id="LOCAL-00007">
+      <created>1579355719286</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1579355719286</updated>
+    </task>
+    <task id="LOCAL-00008">
+      <created>1579401344131</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1579401344131</updated>
+    </task>
+    <task id="LOCAL-00009">
+      <created>1579446584821</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1579446584821</updated>
+    </task>
+    <task id="LOCAL-00010">
+      <created>1579573881217</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1579573881217</updated>
+    </task>
+    <task id="LOCAL-00011">
+      <created>1579574085155</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1579574085155</updated>
+    </task>
+    <task id="LOCAL-00012">
+      <created>1579576784042</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1579576784042</updated>
+    </task>
+    <task id="LOCAL-00013">
+      <created>1579671481120</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1579671481120</updated>
+    </task>
+    <task id="LOCAL-00014">
+      <created>1579694156948</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1579694156948</updated>
+    </task>
+    <task id="LOCAL-00015">
+      <created>1579708836056</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1579708836056</updated>
+    </task>
+    <task id="LOCAL-00016">
+      <created>1579762243035</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1579762243035</updated>
+    </task>
+    <task id="LOCAL-00017">
+      <created>1579850075670</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1579850075670</updated>
+    </task>
+    <task id="LOCAL-00018">
+      <created>1579929064974</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1579929064974</updated>
+    </task>
+    <task id="LOCAL-00019">
+      <created>1580290403703</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1580290403704</updated>
+    </task>
+    <task id="LOCAL-00020" summary="个人中心配置">
+      <created>1580294404577</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1580294404577</updated>
+    </task>
+    <task id="LOCAL-00021" summary="字典表添加">
+      <created>1580435301201</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1580435301201</updated>
+    </task>
+    <task id="LOCAL-00022" summary="字典表添加">
+      <created>1580441107084</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1580441107084</updated>
+    </task>
+    <task id="LOCAL-00023" summary="字典表添加">
+      <created>1580523961744</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1580523961744</updated>
+    </task>
+    <task id="LOCAL-00024" summary="字典表添加">
+      <created>1580531730041</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1580531730041</updated>
+    </task>
+    <task id="LOCAL-00025" summary="字典表添加">
+      <created>1580532903647</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1580532903647</updated>
+    </task>
+    <task id="LOCAL-00026" summary="字典表添加">
+      <created>1580544994814</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1580544994814</updated>
+    </task>
+    <task id="LOCAL-00027" summary="字典表添加">
+      <created>1580552710480</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1580552710480</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="个人中心配置" />
+    <MESSAGE value="字典表添加" />
+    <option name="LAST_COMMIT_MESSAGE" value="字典表添加" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="74" key="#Auto_Import" timestamp="1579183363350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="74" key="#Auto_Import/0.0.1536.824@0.0.1536.824" timestamp="1579183363350" />
+    <state x="361" y="74" key="#Notifications" timestamp="1580486148381">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="74" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1580486148381" />
+    <state x="361" y="74" key="#Project_Structure" timestamp="1579575215823">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="74" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1579575215823" />
+    <state x="499" y="170" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1579523351310">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="170" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579523351310" />
+    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580486634047">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1580486634047" />
+    <state x="480" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580393121747">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="480" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1580393121747" />
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1580537457157">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1580537457157" />
+    <state x="449" y="142" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579180561500">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="142" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1579180561500" />
+    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580407706358">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1580407706358" />
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579575605818">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579575605818" />
+    <state x="535" y="266" key="AbstractVcsHelper.FilterDialog.org.jetbrains.idea.svn.history.SvnVersionFilterComponent" timestamp="1579097371815">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="535" y="266" key="AbstractVcsHelper.FilterDialog.org.jetbrains.idea.svn.history.SvnVersionFilterComponent/0.0.1536.824@0.0.1536.824" timestamp="1579097371815" />
+    <state x="272" y="8" key="CommitChangelistDialog2" timestamp="1580552707067">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="272" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1580552707067" />
+    <state width="465" height="466" key="DebuggerActiveHint" timestamp="1580522691185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="465" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1580522691185" />
+    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1580555581643">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1580555581643" />
+    <state width="1160" height="188" key="GridCell.Tab.0.bottom" timestamp="1580552663369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580552663369" />
+    <state width="1160" height="188" key="GridCell.Tab.0.center" timestamp="1580552663368">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1580552663368" />
+    <state width="1160" height="188" key="GridCell.Tab.0.left" timestamp="1580552663368">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1580552663368" />
+    <state width="1160" height="188" key="GridCell.Tab.0.right" timestamp="1580552663369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1580552663369" />
+    <state width="1160" height="188" key="GridCell.Tab.1.bottom" timestamp="1580552663369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580552663369" />
+    <state width="1160" height="188" key="GridCell.Tab.1.center" timestamp="1580552663369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1580552663369" />
+    <state width="1160" height="188" key="GridCell.Tab.1.left" timestamp="1580552663369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1580552663369" />
+    <state width="1160" height="188" key="GridCell.Tab.1.right" timestamp="1580552663369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1580552663369" />
+    <state width="1160" height="188" key="GridCell.Tab.2.bottom" timestamp="1580552663370">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580552663370" />
+    <state width="1160" height="188" key="GridCell.Tab.2.center" timestamp="1580552663370">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1580552663370" />
+    <state width="1160" height="188" key="GridCell.Tab.2.left" timestamp="1580552663370">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1580552663370" />
+    <state width="1160" height="188" key="GridCell.Tab.2.right" timestamp="1580552663370">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1160" height="188" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1580552663370" />
+    <state x="142" y="115" key="SettingsEditor" timestamp="1580555480820">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="142" y="115" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1580555480820" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1579702583267">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1579702583267" />
+    <state x="253" y="163" key="caller.chooser.dialog" timestamp="1579346506786">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="253" y="163" key="caller.chooser.dialog/0.0.1536.824@0.0.1536.824" timestamp="1579346506786" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1580440667997">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1580440667997" />
+    <state x="93" y="93" width="1350" height="638" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1580440596368">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1580440596368" />
+    <state x="584" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579099337887">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="584" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1579099337887" />
+    <state x="323" y="151" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1580545629055">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="323" y="151" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1580545629055" />
+    <state x="457" y="172" width="621" height="480" key="find.popup" timestamp="1580457956050">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="457" y="172" width="621" height="480" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1580457956050" />
+    <state x="178" y="120" key="new project wizard" timestamp="1579762278649">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="120" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1579762278649" />
+    <state x="511" y="45" key="refactoring.ChangeSignatureDialog" timestamp="1579443863596">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="511" y="45" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1579443863596" />
+    <state x="425" y="189" key="run.anything.popup" timestamp="1580189670082">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1580189670082" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1580552449912">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580552449912" />
+    <state x="546" y="103" key="svn.repositoryBrowser" timestamp="1579097349372">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="546" y="103" key="svn.repositoryBrowser/0.0.1536.824@0.0.1536.824" timestamp="1579097349372" />
+    <state x="575" y="319" key="svn.upgradeDialog" timestamp="1579097087269">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="575" y="319" key="svn.upgradeDialog/0.0.1536.824@0.0.1536.824" timestamp="1579097087269" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="resultData" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/demo_admin$DemoSystemApplication.ic" NAME="DemoSystemApplication Coverage Results" MODIFIED="1579570494902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

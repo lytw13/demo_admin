@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lytw13.demo.dao.DictDataMapper">
+    <resultMap id="BaseResultMap" type="com.lytw13.demo.model.TbDictData">
+        <id column="dict_data_id" jdbcType="INTEGER" property="dictDataId" />
+        <result column="dict_data_type" jdbcType="VARCHAR" property="dictDataType" />
+        <result column="dict_data_label" jdbcType="INTEGER" property="dictDataLabel" />
+        <result column="dict_data_value" jdbcType="VARCHAR" property="dictDataValue" />
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+    dict_data_id,dict_data_type,dict_data_label,dict_data_value
+    </sql>
+
+    <select id="get" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tb_dict_data
+        <where>
+            <trim suffixOverrides="and">
+                <if test="dictDataId != null and dictDataId!= ''">
+                    dict_data_id = #{dictDataId,jdbcType=INTEGER} and
+                </if>
+                <if test="dictDataType != null and dictDataType!= ''">
+                    dict_data_type = #{dictDataType,jdbcType=VARCHAR} and
+                </if>
+                <if test="dictDataLabel!= null and dictDataLabel!= ''">
+                    dict_data_label = #{dictDataLabel,jdbcType=VARCHAR} and
+                </if>
+                <if test="dictDataValue != null and dictDataValue!= ''">
+                    dict_data_value = #{dictDataValue,jdbcType=INTEGER} and
+                </if>
+            </trim>
+        </where>
+    </select>
+
+</mapper>

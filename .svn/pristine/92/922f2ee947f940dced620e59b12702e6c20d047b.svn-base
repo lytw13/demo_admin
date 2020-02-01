@@ -1,0 +1,22 @@
+package com.lytw13.demo.service.impl;
+
+import com.lytw13.demo.dao.DictDataMapper;
+import com.lytw13.demo.model.TbDictData;
+import com.lytw13.demo.service.DictDataService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class DictDataServiceImpl implements DictDataService {
+    @Autowired
+    DictDataMapper dictDataMapper;
+    @Override
+    public List<TbDictData> getType(String type) {
+        TbDictData tbDictData = new TbDictData();
+        tbDictData.setDictDataType(type);
+        List<TbDictData> tbDictDataList = dictDataMapper.get(tbDictData);
+        return tbDictDataList;
+    }
+}
