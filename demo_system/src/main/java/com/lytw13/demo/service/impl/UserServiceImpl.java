@@ -54,15 +54,16 @@ public class UserServiceImpl implements UserService {
         ////        }
         //        //2 在数据库中或者redis查找是否正确
         if(redisTemplate.hasKey("user"+user.getId())) {
+            System.out.println("从redis中读取到用户数据");
             return new ResponseResult().setResultSuccess(user);
         }
-        TbUser tbUser = userMapper.selectByName(user.getName());
-        if (tbUser == null) {
-            return new ResponseResult().setResultFail("用户名不存在");
+        List<TbUser> list = userMapper.list(user);
+        if (list.size() == 0) {
+            return new ResponseResult().setResultFail("用户名错误或者密码错误");
         }
-        redisTemplate.opsForValue().set("user"+tbUser.getId(),tbUser.getId()+"");
-        logger.info("将{}存到redis，数据：{}","user"+tbUser.getId(),tbUser.getId());
-        return new ResponseResult().setResultSuccess(tbUser);
+        redisTemplate.opsForValue().set("user"+list.get(0).getId(),list.get(0).getId()+"");
+        logger.info("将{}存到redis，数据：{}","user"+list.get(0).getId(),list.get(0).getId());
+        return new ResponseResult().setResultSuccess(list.get(0));
     }
 
     public BaseResult  getByToken(@PathVariable("token") String token) {

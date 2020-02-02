@@ -9,27 +9,13 @@
     height: auto;
 }
 
-/*搜索框*/
-.search_form {
-    	width:auto;
-    	height:100px;
-    	border: 1px solid #ccc;
-    	border-radius:20px;
-    	text-align: center;
-    	}
-	    .search {
-	    margin:10px;
-	    }
-	    .leftContainer {
-	    width:30%;
-	    border: 1px solid #ccc;
-	    float: left;
-	    }
-	   .rightContainer {
-	    width:70%;
-	    float: left;
-	    }
-	    
+/*文本框*/
+input[type="text"]{
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	height: 30px;
+}
+
 /*错误信息相关*/
 .errorMessage {
     	color: red;
@@ -42,10 +28,10 @@
  label span,p span{
      color: red;
      }
-     .content {
-	 height: 300px;
-	}
-	
+.content {
+ height: 300px;
+}
+
 .content-wrapper {
     overflow: auto;
 }
@@ -131,4 +117,9 @@
 .switch-solid input:checked~span:after {
 	background-color: #fff;
 	color: #33cabb
+}
+
+/*按钮轮廓*/
+.btn-round {
+	border-radius: 20px;
 }
