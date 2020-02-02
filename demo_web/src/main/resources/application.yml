@@ -7,7 +7,8 @@ spring:
     url: jdbc:mysql://localhost:3306/db_admin?serverTimezone=Asia/Shanghai
     username: root
 
-#邮箱相关设置
+
+  #邮箱相关设置
   mail:
     default-encoding: utf-8
     host: smtp.163.com
