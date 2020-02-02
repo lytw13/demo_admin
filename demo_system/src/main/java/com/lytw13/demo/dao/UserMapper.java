@@ -26,4 +26,6 @@ public interface UserMapper {
 
     Integer getTotalBySex(Integer user_status);
 
+    Integer update(TbUser tbUser);
+
 }

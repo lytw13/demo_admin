@@ -148,4 +148,13 @@ public class UserServiceImpl implements UserService {
         return new ResponseResult().setResultSuccess(result);
     }
 
+    @Override
+    public BaseResult updateUser(@RequestBody TbUser tbUser) {
+        Integer result =  userMapper.update(tbUser);
+        if(result == 0) {
+            return new ResponseResult().setResultFail("更新失败");
+        }
+        return new ResponseResult().setResultSuccess("更新成功");
+    }
+
 }

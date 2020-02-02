@@ -136,6 +136,7 @@
    		<script type="text/javascript" th:src="@{/js/excel/bootstrap-table-export.js}"></script>
    		
     <script type="text/javascript">
+		var table;
 		//初始化表格
 		initTable();
 		//搜索按钮绑定表格
@@ -144,7 +145,7 @@
 			//先销毁表格
 			$('#myTable').bootstrapTable('destroy');
 			$(document).ready(function () {
-				$('#myTable').bootstrapTable({
+				table = $('#myTable').bootstrapTable({
 					url: "/user/listUser",
 					toolbar: "#toolbar",
 					contentType: "application/x-www-form-urlencoded",
@@ -299,10 +300,10 @@
 
 			//用户状态格式更改
 			function statusFormat(value, row, index){
-				if(row.status==1) {
-					return '<button type="button" class="btn btn-info btn-sm" style="margin-right:15px;border-radius:20px;">正常</button>';
+				if (row.status == 1) {
+					return '<i class=\"fa fa-toggle-on fa-2x\" onclick="disEnable(\'' + row.id + '\',\'' + row.status + '\')"></i> ';
 				} else {
-					return '<button type="button" class="btn btn-info btn-sm" style="margin-right:15px;border-radius:20px;">停用</button>';
+					return '<i class=\"fa fa-toggle-off fa-2x\" onclick="enable(\'' + row.id + '\',\'' + row.status + '\')"></i> ';
 				}
 			};
 
@@ -315,6 +316,43 @@
 					return '女';
 				}
 			};
+
+			function enable(id,status) {
+				//询问框
+				layer.confirm('确认要启用该用户么？', {
+					btn: ['确定', '返回'] //按钮
+				}, function () {
+					$.ajax({
+						type: "POST",
+						url: "/user/changeStatus",
+						data: "id="+id+"&status="+status,
+						success: function(msg){
+							//关闭窗口
+							layer.close(layer.index);
+							//重新渲染表格
+							table.bootstrapTable('refresh');
+						}
+					});
+				});
+			};
+		function disEnable(id,status) {
+			//询问框
+			layer.confirm('确认要停用该用户么？', {
+				btn: ['确定', '返回'] //按钮
+			}, function () {
+				$.ajax({
+					type: "POST",
+					url: "/user/changeStatus",
+					data: "id="+id+"&status="+status,
+					success: function(msg){
+						//关闭窗口
+						layer.close(layer.index);
+						//重新渲染表格
+						table.bootstrapTable('refresh');
+					}
+				});
+			});
+		}
 
 	</script>
 </body>

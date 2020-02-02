@@ -30,5 +30,7 @@ public interface UserService {
     public BaseResult insert(@RequestBody TbUser tbUser);
     @PostMapping("/totalBySex/{id}")
     BaseResult getTotalBySex(@PathVariable("id")Integer user_status);
+    @PostMapping("/updateTbUser")
+    public BaseResult updateUser(@RequestBody TbUser tbUser);
 
 }

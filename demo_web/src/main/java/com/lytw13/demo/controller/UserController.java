@@ -96,11 +96,6 @@ public class UserController {
 
     @PostMapping("updateUser")
     public String updateUser(Model model, TbUser tbUser, String ckStatus) {
-        if(ckStatus.equalsIgnoreCase("on")) {
-            tbUser.setStatus(1);
-        }else {
-            tbUser.setStatus(0);
-        }
         BaseResult result = userService.update(tbUser);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());
@@ -154,6 +149,17 @@ public class UserController {
            return "false";
         }
         return "";
+    }
+
+    @PostMapping("changeStatus")
+    public String changeStatus(TbUser tbUser) {
+        if(tbUser.getStatus() == 1) {
+            tbUser.setStatus(0);
+        }else {
+            tbUser.setStatus(1);
+        }
+        userService.updateUser(tbUser);
+           return "/user/userList";
     }
 
 }

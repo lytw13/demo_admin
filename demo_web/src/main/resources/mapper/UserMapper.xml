@@ -224,4 +224,8 @@
         from tb_user where  user_sex = #{sex,jdbcType=INTEGER}
     </select>
 
+    <update id="update" parameterType="com.lytw13.demo.model.TbUser">
+        update tb_user set  user_status = #{status,jdbcType=INTEGER} where user_id=#{id,jdbcType=INTEGER}
+    </update>
+
 </mapper>
