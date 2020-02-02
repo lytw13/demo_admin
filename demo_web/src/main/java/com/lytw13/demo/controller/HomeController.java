@@ -32,9 +32,10 @@ public class HomeController {
 
     @PostMapping(value = "login")
     public String login(Model model, TbUser tbUser, HttpSession session) {
+        tbUser.setStatus(1);
         BaseResult login = userService.login(tbUser);
         if(login.getResultCode()!=200) {
-            model.addAttribute("message","登陆失败");
+            model.addAttribute("message",login.getResultMsg());
             return "login";
         }
         session.setAttribute("SESSION_USER",tbUser);
@@ -45,7 +46,7 @@ public class HomeController {
     public String regist(Model model,TbUser tbUser) {
         BaseResult regist = userService.regist(tbUser);
         if(regist.getResultCode()!=200) {
-            model.addAttribute("message","注册失败");
+            model.addAttribute("message",regist.getResultMsg());
             return "regist";
         }
         return "success01";

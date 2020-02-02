@@ -55,6 +55,9 @@
 		                <input type="text" name="id" id="id">
 		              	<label>用户名称:</label>
 		                <input type="text" name="name" id="name">
+						<label>创建时间:</label>
+						<input type="text" id="startDate">至<input type="text" id="endDate">
+
 		             </div>
 		             <button id="searchButton" class="btn btn-primary btn-round" type="button">查询</button>
 		             <button type="reset" class="btn btn-warning btn-round">重置</button>
@@ -134,8 +137,18 @@
    		<script type="text/javascript" th:src="@{/js/excel/xlsx.core.min.js}"></script>
    		<script type="text/javascript" th:src="@{/js/excel/tableExport.min.js}"></script>
    		<script type="text/javascript" th:src="@{/js/excel/bootstrap-table-export.js}"></script>
+
+		<!-- 日期插件 -->
+		<script type="text/javascript" th:src="@{/laydate/laydate.js}"></script>
    		
     <script type="text/javascript">
+		//执行一个laydate实例
+		laydate.render({
+			elem: '#startDate' //指定元素
+		});
+		laydate.render({
+			elem: '#endDate' //指定元素
+		});
 		var table;
 		//初始化表格
 		initTable();
@@ -180,7 +193,9 @@
 							pageSize: params.pageSize, // 页面大小
 							pageNumber: params.pageNumber, // 页码
 							id: $("#id").val(),
-							name: $("#name").val()
+							name: $("#name").val(),
+							startDate: $("#startDate").val(),
+							endDate: $("#endDate").val()
 						};
 					},
 					responseHandler: function (res) {

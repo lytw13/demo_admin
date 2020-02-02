@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
         }
         List<TbUser> list = userMapper.list(user);
         if (list.size() == 0) {
-            return new ResponseResult().setResultFail("用户名错误或者密码错误");
+            return new ResponseResult().setResultFail("用户停用或者用户信息输入错误");
         }
         redisTemplate.opsForValue().set("user"+list.get(0).getId(),list.get(0).getId()+"");
         logger.info("将{}存到redis，数据：{}","user"+list.get(0).getId(),list.get(0).getId());
