@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class TbUser implements Serializable {
+public class TbUser implements Serializable{
     private Integer id;
     private String name;
     private String password;
