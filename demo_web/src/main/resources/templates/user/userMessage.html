@@ -90,7 +90,7 @@
                         <div class="tab-content">
                             <!--用户信息-->
                             <div class="tab-pane active" id="user_info">
-                                <form class="form-horizontal" id="myForm" th:action="@{/user/changeMess}" method="post">
+                                <form class="form-horizontal" id="myForm" th:action="@{/user/updateUser}" method="post">
                                     <!--隐藏ID-->
                                     <input name="id" type="hidden" th:value="${tbUser.id}">
                                     <div class="form-group">
@@ -147,7 +147,7 @@
                             
                             <!--修改密码-->
                             <div class="tab-pane" id="modify_password">
-                                <form class="form-horizontal" id="myForm1" method="post" th:action="@{/user/changeMess}">
+                                <form class="form-horizontal" id="myForm1" method="post" th:action="@{/user/updateUser}">
                                 
                                   	<!--隐藏ID-->
                                     <input name="id" type="hidden" th:value="${tbUser.id}" id="id">

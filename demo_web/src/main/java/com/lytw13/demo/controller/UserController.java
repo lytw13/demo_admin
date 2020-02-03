@@ -95,7 +95,7 @@ public class UserController {
     }
 
     @PostMapping("updateUser")
-    public String updateUser(Model model, TbUser tbUser, String ckStatus) {
+    public String updateUser(Model model, TbUser tbUser) {
         BaseResult result = userService.update(tbUser);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());
@@ -126,12 +126,6 @@ public class UserController {
         return "/user/userMessage";
     }
 
-    @PostMapping(value="changeMess")
-    public String changeMess(TbUser tbUser, String oldPassword, Model model) {
-        userService.update(tbUser);
-        model.addAttribute("message", "更新成功");
-        return "/index";
-    }
 
     public List listUser(Model model, TbUser tbUser) {
         BaseResult result = userService.list(tbUser);
