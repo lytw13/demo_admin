@@ -1,6 +1,6 @@
 package com.lytw13.demo.service.impl;
 
-import com.lytw13.demo.dao.NoticeMapper;
+import com.lytw13.demo.mapper.sys.NoticeMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbNotice;
 import com.lytw13.demo.service.NoticeService;

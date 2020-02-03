@@ -1,9 +1,8 @@
 package com.lytw13.demo.service.impl;
 
-import com.lytw13.demo.dao.DictTypeMapper;
+import com.lytw13.demo.mapper.sys.DictTypeMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbDictType;
-import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.DictTypeService;
 import com.lytw13.demo.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;

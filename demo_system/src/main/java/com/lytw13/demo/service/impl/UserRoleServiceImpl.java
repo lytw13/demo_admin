@@ -1,6 +1,6 @@
 package com.lytw13.demo.service.impl;
 
-import com.lytw13.demo.dao.UserRoleMapper;
+import com.lytw13.demo.mapper.sys.UserRoleMapper;
 import com.lytw13.demo.model.TbUserRole;
 import com.lytw13.demo.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;

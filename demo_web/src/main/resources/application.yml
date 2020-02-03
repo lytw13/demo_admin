@@ -2,10 +2,20 @@ server:
   port: 8080
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    password: 123456
-    url: jdbc:mysql://localhost:3306/db_admin?serverTimezone=Asia/Shanghai
-    username: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    password: 123456
+#    url: jdbc:mysql://localhost:3306/db_admin?serverTimezone=Asia/Shanghai
+#    username: root
+    sys:
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/db_admin?serverTimezone=Asia/Shanghai
+    goods:
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/db_demo_per?serverTimezone=Asia/Shanghai
 
 
   #邮箱相关设置
@@ -43,15 +53,8 @@ logging:
     com:
       lytw13:
         demo:
-          dao: debug
+          mapper: debug
 
-### mybatis xml位置
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
 ### 分页
 pagehelper:
   helperDialect: mysql
-
-
-
-

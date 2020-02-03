@@ -142,15 +142,6 @@ public class UserController {
         return resultData;
     }
 
-    @PostMapping("checkPassword")
-    public String checkPassword(Model model, TbUser user) {
-        ArrayList<TbUser> list = (ArrayList) listUser(model,user);
-        if(list == null || list.size() == 0) {
-           return "false";
-        }
-        return "";
-    }
-
     @PostMapping("changeStatus")
     public String changeStatus(TbUser tbUser) {
         if(tbUser.getStatus() == 1) {
@@ -160,6 +151,16 @@ public class UserController {
         }
         userService.updateUser(tbUser);
            return "/user/userList";
+    }
+
+    @PostMapping("check")
+    @ResponseBody
+    public Integer check(TbUser tbUser) {
+        BaseResult result = userService.list(tbUser);
+        if(result.getResultCode()!=200) {
+              return 0;
+        }
+        return 1;
     }
 
 }

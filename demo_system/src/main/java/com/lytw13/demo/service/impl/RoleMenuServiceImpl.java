@@ -1,6 +1,6 @@
 package com.lytw13.demo.service.impl;
 
-import com.lytw13.demo.dao.RoleMenuMapper;
+import com.lytw13.demo.mapper.sys.RoleMenuMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbRoleMenu;
 import com.lytw13.demo.service.RoleMenuService;

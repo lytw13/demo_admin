@@ -330,21 +330,19 @@
 			if(password != null && password != ''){
 			checkPassword(password,id);
 		}else {
-			    alert("密码不能为空");
+			    layer.msg("密码不能为空");
             }
 		});
 		//发ajax请求到后台判断用户名是否存在
 		function checkPassword(password,id){
 			$.ajax({
-			url : "/user/checkPassword",
+			url : "/user/check",
 			type : "post",
 			dataType : 'JSON',
 			data : {password:password,id:id},
 			success : function(result) {
-			    console.log(result);
-			//已经存在该名字提示用户
-				if(result == 1){
-					$("#message").html("密码输入错误！");
+				if(result == 0){
+                    layer.msg('原密码输入错误，请检查！');
 				}
 			}
 			});

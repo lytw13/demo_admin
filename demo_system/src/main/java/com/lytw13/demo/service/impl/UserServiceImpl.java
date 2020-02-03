@@ -1,7 +1,7 @@
 package com.lytw13.demo.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lytw13.demo.dao.UserMapper;
+import com.lytw13.demo.mapper.sys.UserMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.UserService;
@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

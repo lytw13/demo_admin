@@ -1,6 +1,6 @@
 package com.lytw13.demo.service.impl;
 
-import com.lytw13.demo.dao.RoleMapper;
+import com.lytw13.demo.mapper.sys.RoleMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbRole;
 import com.lytw13.demo.service.RoleService;

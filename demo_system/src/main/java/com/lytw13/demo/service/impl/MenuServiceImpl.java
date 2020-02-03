@@ -1,6 +1,6 @@
 package com.lytw13.demo.service.impl;
 
-import com.lytw13.demo.dao.MenuMapper;
+import com.lytw13.demo.mapper.sys.MenuMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbMenu;
 import com.lytw13.demo.service.MenuService;

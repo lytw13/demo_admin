@@ -1,6 +1,6 @@
 package com.lytw13.demo.service.impl;
 
-import com.lytw13.demo.dao.DeptMapper;
+import com.lytw13.demo.mapper.sys.DeptMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbDept;
 import com.lytw13.demo.service.DeptService;

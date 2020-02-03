@@ -150,7 +150,7 @@
 		            
 		             <div class="row">
 				        <div class="col-sm-offset-5 col-sm-10">
-				            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-check"></i>保 存</button>&nbsp;
+				            <button type="button" class="btn btn-sm btn-primary" id="submitHandler"><i class="fa fa-check"></i>保 存</button>&nbsp;
 				            <button type="button" class="btn btn-sm btn-danger" onclick="javascript:history.back(-1);"><i class="fa fa-reply-all"></i>返回 </button>
 				        </div>
 				    </div>
@@ -194,7 +194,10 @@
 	<script th:src="@{/js/jquery-3.4.1.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 	<script th:src="@{/js/app.min.js}"></script>
-	
+
+	<!-- layer弹框插件 -->
+	<script th:src="@{/js/layer/layer.js}"></script>
+
 	<!-- select2 js -->
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 
@@ -316,7 +319,46 @@
 
 								}
 							});
-						})
+						});
+		$("#name").focusout(function() {
+			var name = $("#name").val();
+			if(name != null && name != ''){
+				check(name);
+			}
+		});
+		//发ajax请求到后台判断用户名是否存在
+		function check(name){
+			$.ajax({
+				url : "/user/check",
+				type : "post",
+				dataType : 'JSON',
+				data : {name:name},
+				success : function(result) {
+					//已经存在该名字提示用户
+					if(result == 1){
+						layer.msg('已经存在该用户');
+					}
+				}
+			});
+		}
+
+		$("#submitHandler").on("click", function(){
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : "/user/add",
+				data : $("#myForm").serialize(),
+				success : function(data) {
+					window.location.href="/user/listPage"
+				},
+				error: function (error) {
+					layer.alert('已经存在该用户', {
+						skin: 'layui-layer-lan' //样式类名
+						,closeBtn: 0
+				})
+				}
+			});
+		});
 	</script>
 </body>
 </html>
