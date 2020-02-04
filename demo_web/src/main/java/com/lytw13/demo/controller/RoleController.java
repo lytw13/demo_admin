@@ -3,6 +3,7 @@ package com.lytw13.demo.controller;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbRole;
 import com.lytw13.demo.model.TbRoleMenu;
+import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.RoleMenuService;
 import com.lytw13.demo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +89,17 @@ public class RoleController {
         }
         ArrayList list = (ArrayList) result.getResultData();
         return list;
+    }
+
+    @PostMapping("changeStatus")
+    public String changeStatus(TbRole tbRole) {
+        if(tbRole.getStatus() == 1) {
+            tbRole.setStatus(0);
+        }else {
+            tbRole.setStatus(1);
+        }
+        roleService.updateRole(tbRole);
+        return "/role/roleList";
     }
 
 }

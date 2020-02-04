@@ -23,4 +23,6 @@ public interface RoleService {
 
     @PostMapping("/role/update")
     BaseResult update(@RequestBody TbRole tbRole);
+
+    BaseResult updateRole(TbRole tbRole);
 }

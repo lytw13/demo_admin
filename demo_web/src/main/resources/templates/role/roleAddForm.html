@@ -101,11 +101,11 @@
     <script th:src="@{/js/jquery-3.4.1.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/app.min.js}"></script>
+	
+	<!-- layer弹框插件 -->
+	<script th:src="@{/js/layer/layer.js}"></script>
     
     
-    <!-- switchery js -->		
-	<script th:src="@{/js/form/switchery/switchery.min.js}"></script>
-
 	<script th:src="@{/js/ztree/jquery.ztree.core.min.js}"></script>
 	<script th:src="@{/js/ztree/jquery.ztree.excheck.js}"></script>
 
@@ -113,14 +113,7 @@
 	<!-- 表单验证插件 -->     
     <script th:src="@{/js/form/formValidation/jquery.validate.min.js}"></script>
     <script th:src="@{/js/form/formValidation/messages_zh.min.js}"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		//switchery插件使用
-		   var elem = document.querySelector('.js-switch');
-		   var init = new Switchery(elem);
-	})
-	</script>
-	
+
 	<!-- 表单验证 -->
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -185,6 +178,12 @@
 				var index = parent.layer.getFrameIndex(window.name); //获取当前窗口index
 				parent.layer.close(index);
 				window.parent.location.reload();
+			},
+			error: function (error) {
+				layer.alert('已经存在该角色', {
+					skin: 'layui-layer-lan' //样式类名
+					,closeBtn: 0
+				})
 			}
 		});
 	});

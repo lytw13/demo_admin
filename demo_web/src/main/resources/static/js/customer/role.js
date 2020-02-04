@@ -1,11 +1,10 @@
 /**
  * 
  */
-
+var table;
 $(document).ready(function() {
 	    //选中行的数据
 		var param;
-
 		window.operateEvents={
 				//添加权限
 			    "click #addPermission":function (e, value, row, index) {
@@ -17,7 +16,7 @@ $(document).ready(function() {
 							fixed: false, //不固定
 							maxmin: true,
 						content: '/role/modifyPage'
-					});
+					});````	
 				}
 		    };
 		
@@ -25,13 +24,13 @@ $(document).ready(function() {
 		
 		//用户状态格式更改
 		function statusFormat(value, row, index){
-			if(row.status==1) {
-				return '<button type="button" class="btn btn-info btn-sm" style="margin-right:15px;border-radius:20px;">正常</button>';
-			}else {
-				return '<button type="button" class="btn btn-info btn-sm" style="margin-right:15px;border-radius:20px;">停用</button>';
+			if (row.status == 1) {
+				return '<i class=\"fa fa-toggle-on fa-2x\" onclick="disEnable(\'' + row.id + '\',\'' + row.status + '\')"></i> ';
+			} else {
+				return '<i class=\"fa fa-toggle-off fa-2x\" onclick="enable(\'' + row.id + '\',\'' + row.status + '\')"></i> ';
 			}
 		};
-		$('#myTable').bootstrapTable({
+		table = $('#myTable').bootstrapTable({
 			url: "/role/list",
 			toolbar: "#toolbar",
 			classes: "table table-bordered table-hover table-striped",  //添加表格斑马条 鼠标覆盖时效果 以及表格边框
@@ -126,3 +125,40 @@ $(document).ready(function() {
 			window.location.href="/role/delete?id="+rows[0].id+"&name="+rows[0].name;
 			});
 		});
+
+		function enable(id,status) {
+			//询问框
+			layer.confirm('确认要启用该用户么？', {
+				btn: ['确定', '返回'] //按钮
+			}, function () {
+				$.ajax({
+					type: "POST",
+					url: "/role/changeStatus",
+					data: "id="+id+"&status="+status,
+					success: function(msg){
+						//关闭窗口
+						layer.close(layer.index);
+						//重新渲染表格
+						table.bootstrapTable('refresh');
+					}
+				});
+			});
+		};
+		function disEnable(id,status) {
+			//询问框
+			layer.confirm('确认要停用该用户么？', {
+				btn: ['确定', '返回'] //按钮
+			}, function () {
+				$.ajax({
+					type: "POST",
+					url: "/role/changeStatus",
+					data: "id="+id+"&status="+status,
+					success: function(msg){
+						//关闭窗口
+						layer.close(layer.index);
+						//重新渲染表格
+						table.bootstrapTable('refresh');
+					}
+				});
+			});
+		}

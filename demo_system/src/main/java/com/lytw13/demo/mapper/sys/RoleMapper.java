@@ -17,4 +17,6 @@ public interface RoleMapper {
     Integer updateByPrimaryKeySelective(TbRole tbRole);
 
     List<TbRole> list();
+
+    Integer update(TbRole tbRole);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.BitSet;
 import java.util.List;
 
 @RestController
@@ -55,6 +56,15 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public BaseResult update(@RequestBody TbRole tbRole) {
         Integer result =  roleMapper.updateByPrimaryKeySelective(tbRole);
+        if(result == 0) {
+            return new ResponseResult().setResultFail("更新失败");
+        }
+        return new ResponseResult().setResultSuccess("更新成功");
+    }
+
+    @Override
+    public BaseResult updateRole(TbRole tbRole) {
+        Integer result =  roleMapper.update(tbRole);
         if(result == 0) {
             return new ResponseResult().setResultFail("更新失败");
         }
