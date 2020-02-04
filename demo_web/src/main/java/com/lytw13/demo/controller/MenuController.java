@@ -38,12 +38,7 @@ public class MenuController {
     }
 
     @PostMapping("add")
-    public String add(Model model, TbMenu tbMenu, String ckStatus,String menuPname) {
-        if(ckStatus.equalsIgnoreCase("on")) {
-            tbMenu.setStatus(1);
-        }else {
-            tbMenu.setStatus(0);
-        }
+    public String add(Model model, TbMenu tbMenu) {
         BaseResult result = menuService.insert(tbMenu);
         if(result.getResultCode()!=200){
             model.addAttribute("message",result.getResultMsg());
@@ -53,12 +48,7 @@ public class MenuController {
 
 
     @PostMapping("updateMenu")
-    public String updateMenu(Model model, TbMenu tbMenu, String ckStatus) {
-        if(ckStatus.equalsIgnoreCase("on")) {
-            tbMenu.setStatus(1);
-        }else {
-            tbMenu.setStatus(0);
-        }
+    public String updateMenu(Model model, TbMenu tbMenu) {
         BaseResult result = menuService.update(tbMenu);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());

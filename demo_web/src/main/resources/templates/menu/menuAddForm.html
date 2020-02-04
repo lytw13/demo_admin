@@ -48,7 +48,7 @@
           	
 				<section class="content">
 									  <div class="main-content">
-		            <form id="myForm" class="form-horizontal" th:action="@{/menu/add}" method="post">
+		            <form id="myForm" class="form-horizontal">
 		            <h4 class="form-header h4">基本信息</h4>
 						<div th:if="${not #strings.isEmpty(pid)}">
 							<input name="pid" type="hidden" th:value="${pid}">
@@ -106,19 +106,18 @@
 		                <div class="col-sm-6">
 		                    <div class="form-group">
 		                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>菜单状态：</label>
-		                        <div class="col-sm-8">
-		                            <label class="toggle-switch switch-solid">
-			                            <input type="checkbox" name="ckStatus" class="js-switch" checked>
-			                            <span></span>
-			                        </label>
-		                        </div>
+								<div class="col-sm-8">
+									<select name="status" class="form-control m-b" th:with="type = ${@dictDataServiceImpl.getType('is_enabled')}">
+										<option th:each="dict : ${type}" th:value="${dict.dictDataValue}" th:text="${dict.dictDataLabel}"></option>
+									</select>
+								</div>
 		                    </div>
 		                </div>
 		            </div>
 		            
 		             <div class="row">
 				        <div class="col-sm-offset-5 col-sm-10">
-				            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-check"></i>保 存</button>&nbsp;
+				            <button type="button" class="btn btn-sm btn-primary" id="submitHandler"><i class="fa fa-check"></i>保 存</button>&nbsp;
 				            <button type="button" class="btn btn-sm btn-danger" onclick="javascript:history.back(-1);"><i class="fa fa-reply-all"></i>返回 </button>
 				        </div>
 				    </div>
@@ -137,11 +136,11 @@
     <script th:src="@{/js/jquery-3.4.1.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/app.min.js}"></script>
-    
-    
-    
-    <!-- switchery js -->		
-	<script th:src="@{/js/form/switchery/switchery.min.js}"></script>
+
+
+
+	<!-- layer弹框插件 -->
+	<script th:src="@{/js/layer/layer.js}"></script>
 	
 	<!-- 表单验证插件 -->     
     <script th:src="@{/js/form/formValidation/jquery.validate.min.js}"></script>
@@ -149,15 +148,7 @@
     
     <!-- ztree插件 -->
     <script th:src="@{/js/ztree/jquery.ztree.core.min.js}"></script>
-    
-    
-	<script type="text/javascript">
-	$(document).ready(function(){
-		//switchery插件使用
-		   var elem = document.querySelector('.js-switch');
-		   var init = new Switchery(elem);
-	})
-	</script>
+	
 	
 	<!-- 表单验证 -->
 	<script type="text/javascript">
@@ -261,7 +252,24 @@
     		   
     		    }
     		});
-    	})
+    	});
+	$("#submitHandler").on("click", function(){
+		$.ajax({
+			cache : true,
+			type : "POST",
+			url : "/menu/add",
+			data : $("#myForm").serialize(),
+			success : function(data) {
+				window.location.href="/menu/listPage"
+			},
+			error: function (error) {
+				layer.alert('已经存在该菜单', {
+					skin: 'layui-layer-lan' //样式类名
+					,closeBtn: 0
+				})
+			}
+		});
+	});
 	</script>		
 </body>
 </html>

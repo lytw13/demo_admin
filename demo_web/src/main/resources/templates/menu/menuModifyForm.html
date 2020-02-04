@@ -122,12 +122,11 @@
 		                <div class="col-sm-6">
 		                    <div class="form-group">
 		                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>菜单状态：</label>
-		                        <div class="col-sm-8">
-		                            <label class="toggle-switch switch-solid">
-			                            <input type="checkbox" name="ckStatus" class="js-switch" checked>
-			                            <span></span>
-			                        </label>
-		                        </div>
+								<div class="col-sm-8">
+									<select name="status" class="form-control m-b" th:with="type = ${@dictDataServiceImpl.getType('is_enabled')}">
+										<option th:each="dict : ${type}" th:value="${dict.dictDataValue}" th:text="${dict.dictDataLabel}"></option>
+									</select>
+								</div>
 		                    </div>
 		                </div>
 		            </div>
@@ -165,15 +164,6 @@
     
     <!-- ztree插件 -->
     <script th:src="@{/js/ztree/jquery.ztree.core.min.js}"></script>
-    
-    
-	<script type="text/javascript">
-	$(document).ready(function(){
-		//switchery插件使用
-		   var elem = document.querySelector('.js-switch');
-		   var init = new Switchery(elem);
-	})
-	</script>
 	
 	<!-- 表单验证 -->
 	<script type="text/javascript">

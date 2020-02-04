@@ -10,14 +10,14 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-02-03 00:31:33
+Date: 2020-02-04 13:15:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
-CREATE DATABASE demo_admin;
-USE demo_admin;
 
+CREATE Database db_admin;
+USE db_admin;
 -- ----------------------------
 -- Table structure for tb_dept
 -- ----------------------------
@@ -29,16 +29,17 @@ CREATE TABLE `tb_dept` (
   `dept_leader` varchar(255) NOT NULL DEFAULT '' COMMENT '部门负责人',
   `dept_status` int(11) NOT NULL COMMENT '部门状态',
   `dept_pid` int(11) NOT NULL,
-  PRIMARY KEY (`dept_id`)
+  PRIMARY KEY (`dept_id`),
+  UNIQUE KEY `dept_name` (`dept_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='部门表';
 
 -- ----------------------------
 -- Records of tb_dept
 -- ----------------------------
-INSERT INTO `tb_dept` VALUES ('1', '北京科技公司', '1', 'lytw1315', '1', '0');
-INSERT INTO `tb_dept` VALUES ('2', '研发部门', '1', 'lytw1315', '1', '1');
-INSERT INTO `tb_dept` VALUES ('3', '测试部门', '2', 'lytw1315', '1', '1');
-INSERT INTO `tb_dept` VALUES ('4', '运维部门', '3', 'lytw1315', '1', '1');
+INSERT INTO `tb_dept` VALUES ('1', '北京科技公司', '1', 'lytw13', '1', '0');
+INSERT INTO `tb_dept` VALUES ('2', '研发部门', '1', 'lytw13', '1', '1');
+INSERT INTO `tb_dept` VALUES ('3', '测试部门', '2', 'lytw13', '1', '1');
+INSERT INTO `tb_dept` VALUES ('4', '运维部门', '3', 'lytw13', '1', '1');
 
 -- ----------------------------
 -- Table structure for tb_dict_data
@@ -49,8 +50,9 @@ CREATE TABLE `tb_dict_data` (
   `dict_data_type` varchar(255) DEFAULT NULL,
   `dict_data_label` varchar(255) DEFAULT NULL,
   `dict_data_value` int(11) DEFAULT NULL,
-  PRIMARY KEY (`dict_data_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`dict_data_id`),
+  UNIQUE KEY `dict_data_label` (`dict_data_label`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_dict_data
@@ -59,7 +61,6 @@ INSERT INTO `tb_dict_data` VALUES ('1', 'user_sex', '男', '0');
 INSERT INTO `tb_dict_data` VALUES ('2', 'user_sex', '女', '1');
 INSERT INTO `tb_dict_data` VALUES ('3', 'is_enabled', '正常', '1');
 INSERT INTO `tb_dict_data` VALUES ('4', 'is_enabled', '停用', '0');
-INSERT INTO `tb_dict_data` VALUES ('5', 'user_sex', '未知', '2');
 
 -- ----------------------------
 -- Table structure for tb_dict_type
@@ -71,7 +72,8 @@ CREATE TABLE `tb_dict_type` (
   `dict_type_type` varchar(255) DEFAULT NULL,
   `dict_type_status` int(11) DEFAULT NULL,
   `dict_type_createDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`dict_type_id`)
+  PRIMARY KEY (`dict_type_id`),
+  UNIQUE KEY `dict_type_name` (`dict_type_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -94,7 +96,8 @@ CREATE TABLE `tb_menu` (
   `menu_status` int(11) DEFAULT '1',
   `menu_pid` int(11) DEFAULT '0',
   `menu_type` varchar(255) DEFAULT NULL COMMENT '菜单类型 （m菜单 b按钮）',
-  PRIMARY KEY (`menu_id`)
+  PRIMARY KEY (`menu_id`),
+  UNIQUE KEY `menu_name` (`menu_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1204 DEFAULT CHARSET=utf8 COMMENT='菜单权限表';
 
 -- ----------------------------
@@ -126,7 +129,8 @@ CREATE TABLE `tb_notice` (
   `status` varchar(255) DEFAULT NULL,
   `createUser` varchar(255) DEFAULT NULL,
   `createDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -144,7 +148,8 @@ CREATE TABLE `tb_role` (
   `role_name` varchar(255) DEFAULT NULL,
   `role_sequence` int(11) DEFAULT NULL,
   `role_status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`role_id`)
+  PRIMARY KEY (`role_id`),
+  UNIQUE KEY `role_name` (`role_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- ----------------------------
@@ -210,7 +215,7 @@ CREATE TABLE `tb_user` (
 -- ----------------------------
 INSERT INTO `tb_user` VALUES ('1', 'admin', '000000', '1', '/img/defaultUser.jpg', '16666666666', '333333333@qq.com', '1', '2019-11-09 13:33:29');
 INSERT INTO `tb_user` VALUES ('2', 'lytw13', '000000', '1', '/img/defaultUser.jpg', '15555555556', '3333336666@qq.com', '1', '2019-11-09 13:34:42');
-INSERT INTO `tb_user` VALUES ('3', 'lytw', '000000', '0', '/img/defaultUser.jpg', '17777555577', '333335555@qq.com', '1', '2019-11-09 22:42:31');
+INSERT INTO `tb_user` VALUES ('3', 'lytw', '000000', '1', '/img/defaultUser.jpg', '17777555577', '333335555@qq.com', '1', '2019-11-09 22:42:31');
 
 -- ----------------------------
 -- Table structure for tb_user_dept
@@ -232,7 +237,6 @@ CREATE TABLE `tb_user_dept` (
 -- ----------------------------
 INSERT INTO `tb_user_dept` VALUES ('1', '1', '1');
 INSERT INTO `tb_user_dept` VALUES ('2', '2', '2');
-
 -- ----------------------------
 -- Table structure for tb_user_role
 -- ----------------------------
@@ -253,5 +257,4 @@ CREATE TABLE `tb_user_role` (
 -- ----------------------------
 INSERT INTO `tb_user_role` VALUES ('1', '1', '1');
 INSERT INTO `tb_user_role` VALUES ('2', '2', '2');
-
 SET FOREIGN_KEY_CHECKS=1;
