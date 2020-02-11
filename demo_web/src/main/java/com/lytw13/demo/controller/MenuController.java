@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbMenu;
 import com.lytw13.demo.service.MenuService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +37,7 @@ public class MenuController {
         model.addAttribute("menu",menu);
         return "/menu/menuModifyForm";
     }
-
+    @RequiresPermissions("menu:add")
     @PostMapping("add")
     public String add(Model model, TbMenu tbMenu) {
         BaseResult result = menuService.insert(tbMenu);
@@ -46,7 +47,7 @@ public class MenuController {
         return "/menu/menuList";
     }
 
-
+    @RequiresPermissions("menu:modify")
     @PostMapping("updateMenu")
     public String updateMenu(Model model, TbMenu tbMenu) {
         BaseResult result = menuService.update(tbMenu);
@@ -55,7 +56,7 @@ public class MenuController {
         }
         return "/menu/menuList";
     }
-
+    @RequiresPermissions("menu:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {
         BaseResult result = menuService.delete(id);

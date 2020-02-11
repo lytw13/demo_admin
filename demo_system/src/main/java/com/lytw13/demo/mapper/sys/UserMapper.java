@@ -17,9 +17,6 @@ public interface UserMapper {
 
     List<TbUser> list(TbUser user);
 
-
-    TbUser selectByName(String name);
-
     List<TbUser> selectByDept(List deptIds);
 
     List selectUserPermission(Integer id);

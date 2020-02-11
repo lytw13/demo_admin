@@ -5,17 +5,21 @@ import com.lytw13.demo.mapper.sys.UserMapper;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.UserService;
+import com.lytw13.demo.utils.MapAndModelConverge;
 import com.lytw13.demo.utils.ResponseResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class UserServiceImpl implements UserService {
@@ -24,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
     @Autowired
-    StringRedisTemplate redisTemplate;
+    RedisTemplate redisTemplate;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -47,26 +51,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult login(@RequestBody TbUser user) {
-        //1. 接受消息，判断是否为空
-        ////        if(user.getName().trim().isEmpty()|| user.getPassword().trim().isEmpty()) {
-        ////            return new ResponseResult().setResultFail("用户名或密码为空");
-        ////        }
-        //        //2 在数据库中或者redis查找是否正确
-        if(redisTemplate.hasKey("user"+user.getId())) {
-            System.out.println("从redis中读取到用户数据");
-            return new ResponseResult().setResultSuccess(user);
+        if(redisTemplate.hasKey("user"+user.getName())) {
+            LinkedHashMap map = (LinkedHashMap) redisTemplate.opsForValue().get("user" + user.getName());
+            TbUser tbUser = MapAndModelConverge.mapToEntity(map, TbUser.class);
+            logger.info("从redis中读取数据");
+            return new ResponseResult().setResultSuccess(tbUser);
         }
+        logger.info("从数据库中读取数据");
         List<TbUser> list = userMapper.list(user);
         if (list.size() == 0) {
             return new ResponseResult().setResultFail("用户停用或者用户信息输入错误");
         }
-        redisTemplate.opsForValue().set("user"+list.get(0).getId(),list.get(0).getId()+"");
-        logger.info("将{}存到redis，数据：{}","user"+list.get(0).getId(),list.get(0).getId());
+        redisTemplate.opsForValue().set("user"+list.get(0).getName(),list.get(0),600, TimeUnit.SECONDS);
+        logger.info("将{}存到redis，数据：{}","user"+list.get(0).getName(),list.get(0));
         return new ResponseResult().setResultSuccess(list.get(0));
     }
 
     public BaseResult  getByToken(@PathVariable("token") String token) {
-        String s = redisTemplate.opsForValue().get(token);
+        String s = (String) redisTemplate.opsForValue().get(token);
         if(s.isEmpty()) {
             return new ResponseResult().setResultFail("token不存在或者已经失效");
         }
@@ -82,14 +84,6 @@ public class UserServiceImpl implements UserService {
         TbUser user = userMapper.selectByPrimaryKey(id);
         if(user==null) {
             return new ResponseResult().setResultFail("未查到该用户信息");
-        }
-        return new ResponseResult().setResultSuccess(user);
-    }
-    @Override
-    public BaseResult getByName(@PathVariable("name") String name) {
-        TbUser user = userMapper.selectByName(name);
-        if(user==null) {
-            return new ResponseResult().setResultFail("fail");
         }
         return new ResponseResult().setResultSuccess(user);
     }

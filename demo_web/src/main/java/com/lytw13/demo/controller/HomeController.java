@@ -3,6 +3,12 @@ package com.lytw13.demo.controller;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AccountException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,14 +37,28 @@ public class HomeController {
 
 
     @PostMapping(value = "login")
-    public String login(Model model, TbUser tbUser, HttpSession session) {
+    public String login(Model model, TbUser tbUser, String rememberMe) {
         tbUser.setStatus(1);
-        BaseResult login = userService.login(tbUser);
-        if(login.getResultCode()!=200) {
-            model.addAttribute("message",login.getResultMsg());
+//        BaseResult login = userService.login(tbUser);
+//        if(login.getResultCode()!=200) {
+//            model.addAttribute("message",login.getResultMsg());
+//            return "login";
+//        }
+//        session.setAttribute("SESSION_USER",tbUser);
+//        return "index";
+        boolean flag = true;
+        if (rememberMe == null) {
+            flag = false;
+        }
+        UsernamePasswordToken token = new UsernamePasswordToken(tbUser.getName(), tbUser.getPassword(),flag);
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.login(token);
+        } catch (AccountException ae) {
+            model.addAttribute("message",ae.getMessage());
             return "login";
         }
-        session.setAttribute("SESSION_USER",tbUser);
+        subject.getSession().setAttribute("SESSION_USER",tbUser);
         return "index";
     }
 
@@ -52,9 +72,9 @@ public class HomeController {
         return "success01";
     }
 
-    @GetMapping(value = "logout")
-    public String logout(HttpSession session) {
-        session.removeAttribute("SESSION_USER");
-        return "redirect:loginPage";
-    }
+//    @GetMapping(value = "logout")
+//    public String logout(HttpSession session) {
+//        session.removeAttribute("SESSION_USER");
+//        return "redirect:loginPage";
+//    }
 }

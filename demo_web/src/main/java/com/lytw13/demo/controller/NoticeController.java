@@ -9,6 +9,7 @@ import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.NoticeService;
 import com.lytw13.demo.utils.MapAndModelConverge;
 import com.lytw13.demo.utils.ResponseResult;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,7 @@ public class NoticeController {
     @Autowired
     NoticeService noticeService;
 
+    @RequiresPermissions("notice:add")
     @PostMapping("add")
     public String add(Model model, TbNotice tbNotice) {
         BaseResult result = noticeService.insert(tbNotice);
@@ -36,7 +38,7 @@ public class NoticeController {
         return "/notice/noticeList";
     }
 
-
+    @RequiresPermissions("notice:modify")
     @PostMapping("updateNotice")
     public String updateNotice(Model model, TbNotice tbNotice) {
         BaseResult result = noticeService.update(tbNotice);
@@ -46,6 +48,7 @@ public class NoticeController {
         return "/notice/noticeList";
     }
 
+    @RequiresPermissions("notice:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {
         BaseResult result = noticeService.delete(id);

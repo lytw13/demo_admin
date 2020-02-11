@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,7 +46,7 @@
           	<!-- 工具容器 -->
 				<div id="toolbar">
 				<!-- 按钮组 -->		
-					<a id="addButton" class="btn btn-primary" th:href="@{/menu/addPage}"> <i class="fa fa-plus"></i>新增菜单</a>
+					<a id="addButton" class="btn btn-primary" th:href="@{/menu/addPage}" shiro:hasPermission="menu:add"> <i class="fa fa-plus"></i>新增菜单</a>
 					<button id="expandBtn" class="btn btn-primary"> <i class="fa fa-pencil"></i>展开所有节点</button>
 					<button id="collapseButton" class="btn btn-primary" onclick="collapseAll()"><i class="fa fa-minus" ></i>关闭所有节点</button>	
 				</div>
@@ -167,9 +167,9 @@
 				// 格式化按钮
 			    function operateFormatter(value, row, index) {
 			        return [
-			            '<button type="button" id="btnAdd" class="btn btn-primary btn-sm" style="margin-right:15px;"><i class="fa fa-plus" ></i>&nbsp;新增</button>',
-			            '<button type="button" id="btnEdit" class="btn btn-primary btn-sm" style="margin-right:15px;"><i class="fa fa-pencil-square-o" ></i>&nbsp;修改</button>',
-			            '<button type="button" id="btnRemove" class="btn btn-danger btn-sm" style="margin-right:15px;"><i class="fa fa-trash-o"></i>&nbsp;删除</button>'
+			            '<button type="button" id="btnAdd" class="btn btn-primary btn-sm" style="margin-right:15px;" shiro:hasPermission="menu:add"><i class="fa fa-plus" ></i>&nbsp;新增</button>',
+			            '<button type="button" id="btnEdit" class="btn btn-primary btn-sm" style="margin-right:15px;" shiro:hasPermission="menu:modify"><i class="fa fa-pencil-square-o" ></i>&nbsp;修改</button>',
+			            '<button type="button" id="btnRemove" class="btn btn-danger btn-sm" style="margin-right:15px;" shiro:hasPermission="menu:delete"><i class="fa fa-trash-o"></i>&nbsp;删除</button>'
 			        ].join('');
 			    };
 			 // 格式化菜单类型

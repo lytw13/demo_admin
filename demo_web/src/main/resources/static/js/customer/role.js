@@ -16,7 +16,7 @@ $(document).ready(function() {
 							fixed: false, //不固定
 							maxmin: true,
 						content: '/role/modifyPage'
-					});````	
+					});
 				}
 		    };
 		

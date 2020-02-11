@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,5 +21,6 @@ public class TbUser implements Serializable{
     private String email;
     private Integer status;
     private Date createDate;
+    private List<TbRole> roleList;
 
 }

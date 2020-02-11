@@ -12,7 +12,7 @@
         <result column="user_status" jdbcType="INTEGER" property="status" />
         <result column="user_createDate" jdbcType="TIMESTAMP" property="createDate" />
 <!--        <collection property="deptList" javaType="java.util.List" resultMap="DeptResult" />-->
-<!--        <collection property="roleList" javaType="java.util.List" resultMap="RoleResult" />-->
+        <collection property="roleList" javaType="java.util.List" resultMap="RoleResult" />
     </resultMap>
 
     <resultMap id="DeptResult" type="com.lytw13.demo.model.TbDept" >
@@ -45,9 +45,15 @@
     <sql id="Base_Column_List">
     user_id,user_name,user_password,user_sex,user_icon,user_phone,user_email,user_status,user_createDate
     </sql>
-    <sql id="Dept_Column_List">
+    <sql id="AllColumnList">
+    SELECT
     u.user_id,u.user_name,u.user_password,u.user_sex,u.user_icon,u.user_phone,u.user_email,u.user_status,u.user_createDate,
-    d.id,d.name,d.sequence,d.leader,d.status,d.pid
+    d.dept_id,d.dept_name,d.dept_sequence,d.dept_leader,d.dept_status,d.dept_pid,
+    r.role_id,r.role_name,r.role_sequence,r.role_status
+    FROM tb_user u INNER JOIN tb_user_role ur ON u.user_id = ur.user_id
+        INNER JOIN tb_user_dept ud ON u.user_id = ud.user_id
+        INNER JOIN tb_dept d ON ud.dept_id = d.dept_id
+        INNER JOIN tb_role r ON ur.role_id = r.role_id
     </sql>
     <sql id="All_Column_List">
     u.user_id,u.user_name,u.user_password,u.user_sex,u.user_icon,u.user_phone,u.user_email,u.user_status,u.user_createDate,
@@ -145,56 +151,45 @@
         where user_id = #{id,jdbcType=INTEGER}
     </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from tb_user
-        where user_id = #{id,jdbcType=INTEGER}
+        <include refid="AllColumnList" />
+        where u.user_id = #{id,jdbcType=INTEGER}
     </select>
     
     <select id="list" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from tb_user
+        <include refid="AllColumnList" />
         <where>
         <trim suffixOverrides="and">
             <if test="id != null and id!= ''">
-                user_id = #{id,jdbcType=INTEGER} and
+                u.user_id = #{id,jdbcType=INTEGER} and
             </if>
             <if test="name != null and name!= ''">
-                user_name = #{name,jdbcType=VARCHAR} and
+                u.user_name = #{name,jdbcType=VARCHAR} and
             </if>
             <if test="password != null and password!= ''">
-                user_password = #{password,jdbcType=VARCHAR} and
+                u.user_password = #{password,jdbcType=VARCHAR} and
             </if>
             <if test="sex != null and sex!= ''">
-                user_sex = #{sex,jdbcType=INTEGER} and
+                u.user_sex = #{sex,jdbcType=INTEGER} and
             </if>
             <if test="icon != null and icon!= ''">
-                user_icon = #{icon,jdbcType=VARCHAR} and
+                u.user_icon = #{icon,jdbcType=VARCHAR} and
             </if>
             <if test="phone!= null and phone!= ''">
-                user_phone = #{phone,jdbcType=VARCHAR}  and
+                u.user_phone = #{phone,jdbcType=VARCHAR}  and
             </if>
             <if test="email!= null and email!= ''">
-                user_email = #{email,jdbcType=VARCHAR}   and
+                u.user_email = #{email,jdbcType=VARCHAR}   and
             </if>
             <if test="status!= null and status!= ''">
-                user_status = #{status,jdbcType=INTEGER}  and
+                u.user_status = #{status,jdbcType=INTEGER}  and
             </if>
         </trim>
         </where>
     </select>
-
-    <select id="selectByName" parameterType="com.lytw13.demo.model.TbUser" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from tb_user
-        where user_name = #{name,jdbcType=VARCHAR}
-    </select>
-
+    
     <select id="selectByDept" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
-        <include refid="Dept_Column_List" />
+        <include refid="com.lytw13.demo.mapper.sys.DeptMapper.All_Column_List" />
         from tb_user u inner join tb_dept_user du on u.user_id = du.user_id inner join tb_dept d on du.dept_id = d.dept_id
         <where>
             <if test="deptIds != null and deptIds.size > 0">

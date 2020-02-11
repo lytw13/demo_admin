@@ -16,8 +16,6 @@ public interface UserService {
     public BaseResult  getByToken(@PathVariable("token") String token);
     @GetMapping("/get/{id}")
     public BaseResult get(@PathVariable("id") Integer id);
-    @GetMapping("/getByName/{name}")
-    public BaseResult getByName(@PathVariable("name") String name);
     @GetMapping("/list")
     public BaseResult list(TbUser user);
     @GetMapping("/listByDept")

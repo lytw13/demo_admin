@@ -6,6 +6,7 @@ import com.lytw13.demo.model.TbRoleMenu;
 import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.RoleMenuService;
 import com.lytw13.demo.service.RoleService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +37,7 @@ public class RoleController {
         model.addAttribute("role",role);
         return "/role/roleModifyForm";
     }
-
+    @RequiresPermissions("role:add")
     @Transactional
     @PostMapping("add")
     public String add(Model model, TbRole tbRole,String menuList) {
@@ -61,7 +62,7 @@ public class RoleController {
         return "/role/roleList";
     }
 
-
+    @RequiresPermissions("role:modify")
     @PostMapping("updateRole")
     public String updateRole(Model model, TbRole tbRole, String menuList) {
         BaseResult result = roleService.update(tbRole);
@@ -70,7 +71,7 @@ public class RoleController {
         }
         return "/role/roleList";
     }
-
+    @RequiresPermissions("role:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {
         BaseResult result = roleService.delete(id);

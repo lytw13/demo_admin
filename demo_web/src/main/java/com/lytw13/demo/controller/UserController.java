@@ -7,6 +7,7 @@ import com.lytw13.demo.service.RoleService;
 import com.lytw13.demo.service.UserDeptService;
 import com.lytw13.demo.service.UserRoleService;
 import com.lytw13.demo.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
@@ -85,6 +86,7 @@ public class UserController {
         return "/user/userList";
     }
 
+    @RequiresPermissions("user:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {
         BaseResult result = userService.delete(id);
@@ -94,6 +96,8 @@ public class UserController {
         return "/user/userList";
     }
 
+
+    @RequiresPermissions("user:modify")
     @PostMapping("updateUser")
     public String updateUser(Model model, TbUser tbUser) {
         BaseResult result = userService.update(tbUser);

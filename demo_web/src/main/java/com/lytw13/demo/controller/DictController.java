@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.lytw13.demo.model.*;
 import com.lytw13.demo.service.DictDataService;
 import com.lytw13.demo.service.DictTypeService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +37,7 @@ public class DictController {
         return pageInfo;
     }
 
-
+    @RequiresPermissions("dict:add")
     @PostMapping("add")
     public String add(Model model, TbDictType tbDictType) {
         BaseResult result = dictTypeService.insert(tbDictType);
@@ -45,7 +46,7 @@ public class DictController {
         }
         return "/dict/dictList";
     }
-
+    @RequiresPermissions("dict:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer dictTypeId) {
         BaseResult result = dictTypeService.delete(dictTypeId);
@@ -55,7 +56,7 @@ public class DictController {
         return "/dict/dictList";
     }
 
-
+    @RequiresPermissions("dict:modify")
     @PostMapping("modify")
     public String modify(Model model, TbDictType tbDictType) {
         BaseResult result = dictTypeService.update(tbDictType);
@@ -84,7 +85,7 @@ public class DictController {
         return pageInfo;
     }
 
-
+    @RequiresPermissions("dictData:add")
     @PostMapping("addData")
     public String addData(Model model, TbDictData tbDictData) {
         BaseResult result = dictDataService.insert(tbDictData);
@@ -96,7 +97,7 @@ public class DictController {
         model.addAttribute("tbDictType",tbDictType);
         return "/dict/dictDataList";
     }
-
+    @RequiresPermissions("dictData:delete")
     @GetMapping("deleteData")
     public String deleteData(Model model,Integer dictDataId,TbDictType tbDictType) {
         BaseResult result = dictDataService.delete(dictDataId);
@@ -107,7 +108,7 @@ public class DictController {
         return "/dict/dictDataList";
     }
 
-
+    @RequiresPermissions("dictData:modify")
     @PostMapping("modifyData")
     public String modifyData(Model model, TbDictData tbDictData) {
         BaseResult result = dictDataService.update(tbDictData);

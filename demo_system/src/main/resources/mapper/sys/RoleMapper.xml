@@ -37,6 +37,14 @@
     role_id,role_name,role_sequence,role_status
     </sql>
 
+    <sql id="All_Column_List">
+    SELECT
+    r.role_id,r.role_name,r.role_sequence,r.role_status,
+    m.menu_id,m.menu_name,m.menu_icon,m.menu_url,m.menu_permission,m.menu_sequence,m.menu_status,m.menu_pid,m.menu_type
+     from tb_role r INNER JOIN tb_role_menu rm ON r.role_id = rm.role_id
+        INNER JOIN tb_menu m ON rm.menu_id = m.menu_id
+    </sql>
+
 
     <insert id="insert" parameterType="com.lytw13.demo.model.TbRole"  useGeneratedKeys="true" keyProperty="id">
         insert into tb_role
@@ -93,10 +101,8 @@
     </update>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from tb_role
-        where role_id = #{id,jdbcType=INTEGER}
+        <include refid="All_Column_List" />
+        where r.role_id = #{id,jdbcType=INTEGER}
     </select>
 
     <select id="list" resultMap="BaseResultMap">
