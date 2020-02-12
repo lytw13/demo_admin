@@ -33,6 +33,9 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
         // 设置拦截器
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
+        filters.put("remeberFilter", remeberFilter);
+        shiroFilterFactoryBean.setFilters(filters);
         //用户，需要角色权限 “管理员”
 //        filterChainDefinitionMap.put("/user/**", "roles[管理员]");
         filterChainDefinitionMap.put("/login", "anon");
@@ -49,9 +52,6 @@ public class ShiroConfig {
         //主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截
         filterChainDefinitionMap.put("/**", "user");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-        Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
-        filters.put("remeberFilter", remeberFilter);
-        shiroFilterFactoryBean.setFilters(filters);
         return shiroFilterFactoryBean;
     }
 

@@ -21,7 +21,7 @@ public interface RoleService {
     @GetMapping("/role/delete/{id}")
     BaseResult delete(@PathVariable("id") Integer id);
 
-    @PostMapping("/role/update")
+    @PostMapping("/role/updateRole")
     BaseResult update(@RequestBody TbRole tbRole);
 
     BaseResult updateRole(TbRole tbRole);

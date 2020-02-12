@@ -45,7 +45,7 @@
 
 		<section class="content">
 			<div class="main-content">
-				<form id="myForm" class="form-horizontal" th:action="@{/role/add}" method="post" >
+				<form id="myForm" class="form-horizontal" >
 					<h4 class="form-header h4">基本信息</h4>
 					<input type="hidden" name="id" id="id">
 					<div class="row">
@@ -170,7 +170,7 @@
 		$.ajax({
 			cache : true,
 			type : "POST",
-			url : "/role/updateRole",
+			url : "/role/update",
 			data : {
 				"id": $("#id").val(),
 				"name": $("#name").val(),

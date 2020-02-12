@@ -21,6 +21,6 @@ public interface MenuService {
     @GetMapping("/menu/delete/{id}")
     BaseResult delete(@PathVariable("id") Integer id);
 
-    @PostMapping("/menu/update")
+    @PostMapping("/menu/updateMenu")
     BaseResult update(@RequestBody TbMenu tbMenu);
 }

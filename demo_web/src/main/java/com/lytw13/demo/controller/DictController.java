@@ -2,6 +2,7 @@ package com.lytw13.demo.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lytw13.demo.annotation.Log;
 import com.lytw13.demo.model.*;
 import com.lytw13.demo.service.DictDataService;
 import com.lytw13.demo.service.DictTypeService;
@@ -37,6 +38,7 @@ public class DictController {
         return pageInfo;
     }
 
+    @Log("添加字典")
     @RequiresPermissions("dict:add")
     @PostMapping("add")
     public String add(Model model, TbDictType tbDictType) {
@@ -46,6 +48,7 @@ public class DictController {
         }
         return "/dict/dictList";
     }
+    @Log("删除字典")
     @RequiresPermissions("dict:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer dictTypeId) {
@@ -56,9 +59,10 @@ public class DictController {
         return "/dict/dictList";
     }
 
+    @Log("修改字典")
     @RequiresPermissions("dict:modify")
-    @PostMapping("modify")
-    public String modify(Model model, TbDictType tbDictType) {
+    @PostMapping("update")
+    public String update(Model model, TbDictType tbDictType) {
         BaseResult result = dictTypeService.update(tbDictType);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());
@@ -85,6 +89,7 @@ public class DictController {
         return pageInfo;
     }
 
+    @Log("添加字典数据")
     @RequiresPermissions("dictData:add")
     @PostMapping("addData")
     public String addData(Model model, TbDictData tbDictData) {
@@ -97,6 +102,8 @@ public class DictController {
         model.addAttribute("tbDictType",tbDictType);
         return "/dict/dictDataList";
     }
+
+    @Log("删除字典数据")
     @RequiresPermissions("dictData:delete")
     @GetMapping("deleteData")
     public String deleteData(Model model,Integer dictDataId,TbDictType tbDictType) {
@@ -108,6 +115,7 @@ public class DictController {
         return "/dict/dictDataList";
     }
 
+    @Log("修改字典数据")
     @RequiresPermissions("dictData:modify")
     @PostMapping("modifyData")
     public String modifyData(Model model, TbDictData tbDictData) {

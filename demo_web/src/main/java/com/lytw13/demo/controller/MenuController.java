@@ -1,6 +1,7 @@
 package com.lytw13.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lytw13.demo.annotation.Log;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbMenu;
 import com.lytw13.demo.service.MenuService;
@@ -37,6 +38,8 @@ public class MenuController {
         model.addAttribute("menu",menu);
         return "/menu/menuModifyForm";
     }
+
+    @Log("添加菜单")
     @RequiresPermissions("menu:add")
     @PostMapping("add")
     public String add(Model model, TbMenu tbMenu) {
@@ -47,15 +50,17 @@ public class MenuController {
         return "/menu/menuList";
     }
 
+    @Log("修改菜单")
     @RequiresPermissions("menu:modify")
-    @PostMapping("updateMenu")
-    public String updateMenu(Model model, TbMenu tbMenu) {
+    @PostMapping("update")
+    public String update(Model model, TbMenu tbMenu) {
         BaseResult result = menuService.update(tbMenu);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());
         }
         return "/menu/menuList";
     }
+    @Log("删除菜单")
     @RequiresPermissions("menu:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {

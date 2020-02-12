@@ -22,7 +22,7 @@ public interface UserService {
     public BaseResult listByDept(List deptIds);
     @GetMapping("/delete/{id}")
     public BaseResult delete(@PathVariable("id") Integer id);
-    @PostMapping("/update")
+    @PostMapping("/updateUser")
     public BaseResult update(@RequestBody TbUser tbUser);
     @PostMapping("/insert")
     public BaseResult insert(@RequestBody TbUser tbUser);

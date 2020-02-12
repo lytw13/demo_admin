@@ -2,6 +2,7 @@ package com.lytw13.demo.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lytw13.demo.annotation.Log;
 import com.lytw13.demo.model.*;
 import com.lytw13.demo.service.RoleService;
 import com.lytw13.demo.service.UserDeptService;
@@ -67,6 +68,7 @@ public class UserController {
         return "/user/userAddForm";
     }
 
+    @Log("新增用户")
     @PostMapping("add")
     @Transactional
     public String add(Model model, TbUser tbUser, Integer dept_id,Integer[] role_ids) {
@@ -85,7 +87,7 @@ public class UserController {
         }
         return "/user/userList";
     }
-
+    @Log("删除用户")
     @RequiresPermissions("user:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {
@@ -96,10 +98,10 @@ public class UserController {
         return "/user/userList";
     }
 
-
+    @Log("修改用户")
     @RequiresPermissions("user:modify")
-    @PostMapping("updateUser")
-    public String updateUser(Model model, TbUser tbUser) {
+    @PostMapping("update")
+    public String update(Model model, TbUser tbUser) {
         BaseResult result = userService.update(tbUser);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());

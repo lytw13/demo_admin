@@ -2,6 +2,7 @@ package com.lytw13.demo.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lytw13.demo.annotation.Log;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.PageVo;
 import com.lytw13.demo.model.TbNotice;
@@ -28,6 +29,7 @@ public class NoticeController {
     @Autowired
     NoticeService noticeService;
 
+    @Log("添加公告")
     @RequiresPermissions("notice:add")
     @PostMapping("add")
     public String add(Model model, TbNotice tbNotice) {
@@ -38,9 +40,10 @@ public class NoticeController {
         return "/notice/noticeList";
     }
 
+    @Log("修改公告")
     @RequiresPermissions("notice:modify")
-    @PostMapping("updateNotice")
-    public String updateNotice(Model model, TbNotice tbNotice) {
+    @PostMapping("update")
+    public String update(Model model, TbNotice tbNotice) {
         BaseResult result = noticeService.update(tbNotice);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());
@@ -48,6 +51,7 @@ public class NoticeController {
         return "/notice/noticeList";
     }
 
+    @Log("删除公告")
     @RequiresPermissions("notice:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {

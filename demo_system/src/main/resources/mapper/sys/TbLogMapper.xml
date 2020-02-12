@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lytw13.demo.mapper.sys.TbLogMapper">
+
+    <resultMap type="com.lytw13.demo.model.TbLog" id="TbLogMap">
+        <result property="logId" column="log_id" jdbcType="INTEGER"/>
+        <result property="logOperRequest" column="log_oper_request" jdbcType="VARCHAR"/>
+        <result property="logOperMethod" column="log_oper_method" jdbcType="VARCHAR"/>
+        <result property="logOperType" column="log_oper_type" jdbcType="INTEGER"/>
+        <result property="logOperComment" column="log_oper_comment" jdbcType="VARCHAR"/>
+        <result property="logOperIp" column="log_oper_ip" jdbcType="VARCHAR"/>
+        <result property="logOperConsume" column="log_oper_consume" jdbcType="INTEGER"/>
+        <result property="logOperDate" column="log_oper_date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    log_id, log_oper_request, log_oper_method, log_oper_type, log_oper_comment, log_oper_ip, log_oper_consume, log_oper_date
+    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TbLogMap">
+        select
+          <include refid="Base_Column_List"></include>
+        from db_admin.tb_log
+        where log_id = #{logId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TbLogMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from db_admin.tb_log
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TbLogMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from db_admin.tb_log
+        <where>
+            <if test="logId != null">
+                and log_id = #{logId}
+            </if>
+            <if test="logOperRequest != null and logOperRequest != ''">
+                and log_oper_request = #{logOperRequest}
+            </if>
+            <if test="logOperMethod != null and logOperMethod != ''">
+                and log_oper_method = #{logOperMethod}
+            </if>
+            <if test="logOperType != null">
+                and log_oper_type = #{logOperType}
+            </if>
+            <if test="logOperComment != null">
+                and log_oper_comment = #{logOperComment}
+            </if>
+            <if test="logOperIp != null and logOperIp != ''">
+                and log_oper_ip = #{logOperIp}
+            </if>
+            <if test="logOperConsume != null">
+                and log_oper_consume = #{logOperConsume}
+            </if>
+            <if test="logOperDate != null">
+                and log_oper_date = #{logOperDate}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="logId" useGeneratedKeys="true">
+        insert into db_admin.tb_log(log_oper_request, log_oper_method, log_oper_type, log_oper_comment, log_oper_ip, log_oper_consume, log_oper_date)
+        values (#{logOperRequest}, #{logOperMethod}, #{logOperType}, #{logOperComment}, #{logOperIp}, #{logOperConsume}, CURRENT_TIMESTAMP)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update db_admin.tb_log
+        <set>
+            <if test="logOperRequest != null and logOperRequest != ''">
+                log_oper_request = #{logOperRequest},
+            </if>
+            <if test="logOperMethod != null and logOperMethod != ''">
+                log_oper_method = #{logOperMethod},
+            </if>
+            <if test="logOperType != null">
+                log_oper_type = #{logOperType},
+            </if>
+            <if test="logOperComment != null and logOperComment != ''">
+                log_oper_comment = #{logOperComment},
+            </if>
+            <if test="logOperIp != null and logOperIp != ''">
+                log_oper_ip = #{logOperIp},
+            </if>
+            <if test="logOperConsume != null">
+                log_oper_consume = #{logOperConsume},
+            </if>
+            <if test="logOperDate != null">
+                log_oper_date = #{logOperDate},
+            </if>
+        </set>
+        where log_id = #{logId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from db_admin.tb_log where log_id = #{logId}
+    </delete>
+
+</mapper>

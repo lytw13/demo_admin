@@ -1,5 +1,6 @@
 package com.lytw13.demo.controller;
 
+import com.lytw13.demo.annotation.Log;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbRole;
 import com.lytw13.demo.model.TbRoleMenu;
@@ -37,15 +38,11 @@ public class RoleController {
         model.addAttribute("role",role);
         return "/role/roleModifyForm";
     }
+    @Log("添加角色")
     @RequiresPermissions("role:add")
     @Transactional
     @PostMapping("add")
     public String add(Model model, TbRole tbRole,String menuList) {
-//        if(ckStatus.equalsIgnoreCase("on")) {
-//            tbRole.setStatus(1);
-//        }else {
-//            tbRole.setStatus(0);
-//        }
         BaseResult result = roleService.insert(tbRole);
         if(result.getResultCode()!=200){
             model.addAttribute("message",result.getResultMsg());
@@ -61,16 +58,18 @@ public class RoleController {
         }
         return "/role/roleList";
     }
-
+    @Log("修改角色")
     @RequiresPermissions("role:modify")
-    @PostMapping("updateRole")
-    public String updateRole(Model model, TbRole tbRole, String menuList) {
+    @PostMapping("update")
+    public String update(Model model, TbRole tbRole, String menuList) {
         BaseResult result = roleService.update(tbRole);
         if(result.getResultCode() != 200) {
             model.addAttribute("message",result.getResultMsg());
         }
         return "/role/roleList";
     }
+
+    @Log("删除角色")
     @RequiresPermissions("role:delete")
     @GetMapping("delete")
     public String delete(Model model,Integer id) {

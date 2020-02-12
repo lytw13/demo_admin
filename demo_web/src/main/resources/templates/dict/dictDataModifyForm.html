@@ -48,6 +48,7 @@
 		            <form id="myForm" class="form-horizontal">
 						<h4 class="form-header h4">基本信息</h4>
 						<div class="col-sm-6">
+							<input type="hidden" id="dictDataId" name="dictDataId">
 							<div class="form-group">
 								<label class="col-sm-4 control-label"><span style="color: red; ">*</span>字典类型：</label>
 								<div class="col-sm-8">
@@ -111,6 +112,7 @@
 
 		//从父窗口获取
 		var parent_param = parent.param;
+		$("#dictDataId").val(parent_param.dictDataId);
 		$("#dictDataType").val(parent_param.dictDataType);
 		$("#dictDataLabel").val(parent_param.dictDataLabel);
 		$("#dictDataValue").val(parent_param.dictDataValue);
@@ -148,6 +150,7 @@
 			type : "POST",
 			url : "/dict/modifyData",
 			data : {
+				"dictDataId": $("#dictDataId").val(),
 				"dictDataType": $("#dictDataType").val(),
 				"dictDataLabel": $("#dictDataLabel").val(),
 				"dictDataValue": $("#dictDataValue").val()

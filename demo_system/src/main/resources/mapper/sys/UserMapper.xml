@@ -185,6 +185,7 @@
             </if>
         </trim>
         </where>
+        GROUP BY user_name
     </select>
     
     <select id="selectByDept" parameterType="java.lang.Integer" resultMap="BaseResultMap">

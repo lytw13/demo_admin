@@ -24,6 +24,6 @@ public interface NoticeService {
     @GetMapping("/notice/delete/{id}")
     BaseResult delete(@PathVariable("id") Integer id);
 
-    @PostMapping("/notice/update")
+    @PostMapping("/notice/updateNotice")
     BaseResult update(@RequestBody TbNotice tbNotice);
 }

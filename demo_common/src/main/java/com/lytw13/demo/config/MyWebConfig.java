@@ -19,9 +19,11 @@ public class MyWebConfig implements WebMvcConfigurer {
         registry.addViewController("/notice/addPage").setViewName("notice/noticeAddForm");
         registry.addViewController("/dict/listPage").setViewName("dict/dictList");
         registry.addViewController("/dict/addPage").setViewName("dict/dictAddForm");
-        registry.addViewController("/dict/modifyPage").setViewName("dict/dictDataModifyForm");
+        registry.addViewController("/dict/modifyPage").setViewName("dict/dictModifyForm");
         registry.addViewController("/dict/addDataPage").setViewName("dict/dictDataAddForm");
         registry.addViewController("/dict/modifyDataPage").setViewName("dict/dictDataModifyForm");
+        registry.addViewController("/log/listPage").setViewName("log/logList");
 //        registry.addViewController("/index").setViewName("index");
+
     }
 }
