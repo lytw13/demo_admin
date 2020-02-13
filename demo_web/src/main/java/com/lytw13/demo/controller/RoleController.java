@@ -7,6 +7,7 @@ import com.lytw13.demo.model.TbRoleMenu;
 import com.lytw13.demo.model.TbUser;
 import com.lytw13.demo.service.RoleMenuService;
 import com.lytw13.demo.service.RoleService;
+import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("role")
+@Api(tags = "RoleController", description = "角色管理")
 public class RoleController {
     @Autowired
     RoleService roleService;

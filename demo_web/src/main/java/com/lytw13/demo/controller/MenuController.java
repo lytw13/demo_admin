@@ -5,6 +5,8 @@ import com.lytw13.demo.annotation.Log;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.TbMenu;
 import com.lytw13.demo.service.MenuService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("menu")
+@Api(tags = "MenuController", description = "菜单管理")
 public class MenuController {
     @Autowired
     MenuService menuService;
@@ -39,6 +42,7 @@ public class MenuController {
         return "/menu/menuModifyForm";
     }
 
+    @ApiOperation("添加菜单")
     @Log("添加菜单")
     @RequiresPermissions("menu:add")
     @PostMapping("add")
@@ -50,6 +54,7 @@ public class MenuController {
         return "/menu/menuList";
     }
 
+    @ApiOperation("修改菜单")
     @Log("修改菜单")
     @RequiresPermissions("menu:modify")
     @PostMapping("update")
@@ -60,6 +65,8 @@ public class MenuController {
         }
         return "/menu/menuList";
     }
+
+    @ApiOperation("删除菜单")
     @Log("删除菜单")
     @RequiresPermissions("menu:delete")
     @GetMapping("delete")

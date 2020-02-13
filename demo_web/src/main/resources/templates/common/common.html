@@ -124,8 +124,15 @@ desired effect
           </ul>
         </li>
         <li class="treeview">
-          <a th:href="@{/druid}"><i class="fa fa-bar-chart"></i><span>druid监控</span>
+          <a href="#"><i class="fa fa-bar-chart"></i><span>系统工具</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a th:href="@{/druid/sql}">druid监控</a></li>
+            <li><a th:href="@{/swagger/swagger-ui}">系统接口</a></li>
+          </ul>
         </li>
       </ul>
       <!-- /.sidebar-menu -->

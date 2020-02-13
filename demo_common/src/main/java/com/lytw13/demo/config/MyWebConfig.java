@@ -25,5 +25,6 @@ public class MyWebConfig implements WebMvcConfigurer {
         registry.addViewController("/log/listPage").setViewName("log/logList");
 //        registry.addViewController("/index").setViewName("index");
 
+
     }
 }

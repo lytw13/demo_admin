@@ -8,6 +8,8 @@ import com.lytw13.demo.service.RoleService;
 import com.lytw13.demo.service.UserDeptService;
 import com.lytw13.demo.service.UserRoleService;
 import com.lytw13.demo.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -26,6 +28,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
+@Api(tags = "UserController", description = "用户管理")
 public class UserController {
 
     @Autowired
@@ -68,6 +71,7 @@ public class UserController {
         return "/user/userAddForm";
     }
 
+    @ApiOperation("新增用户")
     @Log("新增用户")
     @PostMapping("add")
     @Transactional
