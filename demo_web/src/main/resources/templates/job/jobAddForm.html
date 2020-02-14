@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>AdminLTE 2 | Starter</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<!-- 图标-->
+<link rel="shortcut icon" th:href="@{/img/favicon.ico}">
+
+<!-- 核心CSS-->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+
+<!-- 默认样式表-->
+<link rel="stylesheet" th:href="@{/css/AdminLTE.css}">
+<link rel="stylesheet" th:href="@{/css/skins/skin-blue.min.css}">
+
+<!-- 自定义样式-->
+<link rel="stylesheet" th:href="@{/css/customer/custom.css}">
+
+
+<!-- bootstrap-table css -->
+<link rel="stylesheet"
+	th:href="@{/css/form/bootstrap-table/bootstrap-table.min.css}">
+
+<!-- switchery css -->
+<link rel="stylesheet"
+	th:href="@{/css/form/switchery/switchery.min.css}">
+
+<!-- ztree css -->
+<link rel="stylesheet" th:href="@{/css/ztree/zTreeStyle.css}"
+	type="text/css">
+
+	<link rel="stylesheet" th:href="@{/layui/css/layui.css}" type="text/css" >
+
+
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+
+</head>
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<small>定时任务管理</small>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>定时任务管理</a></li>
+					<li class="active">添加定时任务</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<div class="main-content">
+					<form id="myForm" class="form-horizontal" th:action="@{/job/add}" method="post">
+						<div class="row">
+		                <div class="col-sm-6">
+		                    <div class="form-group">
+		                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>定时任务名称：</label>
+		                        <div class="col-sm-8">
+		                            <input id="jobName" name="jobName" placeholder="请输入定时任务名称" class="form-control" type="text">
+		                        </div>
+		                    </div>
+		                </div>
+		              <div class="col-sm-6">
+		                    <div class="form-group">
+		                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>定时任务调用方法：</label>
+		                        <div class="col-sm-8">
+		                            <input id="jobInvokemethod" name="jobInvokemethod"  class="form-control" type="text">
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            
+		            
+		               <div class="row">
+		                <div class="col-sm-6">
+		                    <div class="form-group">
+		                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>cron表达式：</label>
+		                        <div class="col-sm-8">
+		                            <input id="jobCron" name="jobCron"  class="form-control" type="text">
+		                        </div>
+		                    </div>
+		                </div>
+		              <div class="col-sm-6">
+		                    <div class="form-group">
+		                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>定时任务状态：</label>
+		                        <div class="col-sm-8">
+										<select name="jobStatus" class="form-control m-b" th:with="type = ${@dictDataServiceImpl.getType('is_enabled')}">
+											<option th:each="dict : ${type}" th:value="${dict.dictDataValue}" th:text="${dict.dictDataLabel}"></option>
+										</select>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            
+		             <div class="row">
+				        <div class="col-sm-offset-5 col-sm-10">
+				            <button type="button" class="btn btn-sm btn-primary" id="submitHandler"><i class="fa fa-check"></i>保 存</button>&nbsp;
+				            <button type="button" class="btn btn-sm btn-danger" onclick="javascript:history.back(-1);"><i class="fa fa-reply-all"></i>返回 </button>
+				        </div>
+				    </div>
+					</form>
+				</div>
+			</section>
+		</div>
+
+
+		<footer th:insert="common/common :: footer"></footer>
+		<div class="control-sidebar-bg"></div>
+	</div>
+
+	<!-- js基础文件-->
+	<script th:src="@{/js/jquery-3.4.1.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/app.min.js}"></script>
+
+	<!-- layer弹框插件 -->
+	<script th:src="@{/js/layer/layer.js}"></script>
+
+	<!-- select2 js -->
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+	<!-- switchery js -->
+	<script th:src="@{/js/form/switchery/switchery.min.js}"></script>
+
+	<!-- 表单验证插件 -->
+	<script th:src="@{/js/form/formValidation/jquery.validate.min.js}"></script>
+	<script th:src="@{/js/form/formValidation/messages_zh.min.js}"></script>
+
+	<!-- ztree插件 -->
+	<script th:src="@{/js/ztree/jquery.ztree.core.min.js}"></script>
+
+	<!-- 表单验证 -->
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							// 在键盘按下并释放及提交后验证提交表单
+							$("#myForm").validate({
+								rules : {
+									jobName : {
+										required : true,
+										rangelength : [ 4, 20 ]
+									},
+									jobInvokemethod : {
+										required : true
+									},
+									jobCron : {
+										required : true
+									}
+								},
+								messages : {
+									jobName : {
+										required : "请输入定时任务名",
+										rangelength : "定时任务名应为4-20位"
+									},
+									jobInvokemethod : {
+										required : "请输入定时任务调用方法"
+									},
+									jobCron : {
+										required : "请输入表达式"
+									}
+								}
+							});
+						});
+		$("#jobName").focusout(function() {
+			var jobName = $("#jobName").val();
+			if(jobName != null && jobName != ''){
+				check(jobName);
+			}
+		});
+		//发ajax请求到后台判断定时任务名是否存在
+		function check(jobName){
+			$.ajax({
+				url : "/job/check",
+				type : "post",
+				dataType : 'JSON',
+				data : {jobName:jobName},
+				success : function(result) {
+					//已经存在该名字提示定时任务
+					if(result == 1){
+						layer.msg('已经存在该定时任务');
+					}
+				}
+			});
+		}
+
+		$("#submitHandler").on("click", function(){
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : "/job/add",
+				data : $("#myForm").serialize(),
+				success : function(data) {
+					var index = parent.layer.getFrameIndex(window.name); //获取当前窗口index
+					parent.layer.close(index);
+					window.parent.location.reload();
+				},
+				error: function (error) {
+					layer.alert('已经存在该定时任务', {
+						skin: 'layui-layer-lan' //样式类名
+						,closeBtn: 0
+				})
+				}
+			});
+		});
+	</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.lytw13.demo.model.BaseResult;
 import com.lytw13.demo.model.PageVo;
 import com.lytw13.demo.model.TbLog;
-import com.lytw13.demo.model.TbUser;
+import com.lytw13.demo.model.TbLog;
 import com.lytw13.demo.service.TbLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,13 +24,13 @@ public class LogController {
     TbLogService tbLogService;
     @GetMapping(value="listLog")
     @ResponseBody
-    public PageInfo<TbUser> list(Model model, PageVo pageVo, TbLog tbLog) {
+    public PageInfo<TbLog> list(Model model, PageVo pageVo, TbLog tbLog) {
         PageHelper.startPage(pageVo.getPageNumber(),pageVo.getPageSize());
         ArrayList resultData = (ArrayList) listUser(model,tbLog);
         if(resultData == null) {
             resultData = new ArrayList();
         }
-        PageInfo<TbUser> pageInfo = new PageInfo<TbUser>(resultData);
+        PageInfo<TbLog> pageInfo = new PageInfo<TbLog>(resultData);
         return pageInfo;
     }
 

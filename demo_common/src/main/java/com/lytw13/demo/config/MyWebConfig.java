@@ -23,6 +23,9 @@ public class MyWebConfig implements WebMvcConfigurer {
         registry.addViewController("/dict/addDataPage").setViewName("dict/dictDataAddForm");
         registry.addViewController("/dict/modifyDataPage").setViewName("dict/dictDataModifyForm");
         registry.addViewController("/log/listPage").setViewName("log/logList");
+        registry.addViewController("/job/listPage").setViewName("job/jobList");
+        registry.addViewController("/job/addPage").setViewName("job/jobAddForm");
+        registry.addViewController("/job/modifyPage").setViewName("job/jobModifyForm");
 //        registry.addViewController("/index").setViewName("index");
 
 

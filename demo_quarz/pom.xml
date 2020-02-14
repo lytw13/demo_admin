@@ -9,21 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo_web</artifactId>
+    <artifactId>demo_quarz</artifactId>
+
 
     <dependencies>
         <dependency>
-            <artifactId>demo_system</artifactId>
-            <groupId>com.lytw13</groupId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <artifactId>demo_common</artifactId>
-            <groupId>com.lytw13</groupId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <artifactId>demo_quarz</artifactId>
             <groupId>com.lytw13</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
