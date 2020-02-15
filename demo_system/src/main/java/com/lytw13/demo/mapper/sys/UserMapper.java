@@ -25,4 +25,7 @@ public interface UserMapper {
 
     Integer update(TbUser tbUser);
 
+    Integer updateByName(TbUser tbUser);
+
+    Integer account();
 }

@@ -41,6 +41,26 @@ public class LogAspect {
     //后置通知
     @AfterReturning(value = "recordLog()",returning = "obj")
     public void afterLogs(JoinPoint joinPoint,Object obj) {
+        saveLog(joinPoint);
+        logger.info("后置通知。。。。，返回值："+obj);
+    }
+
+    //最终通知
+    @After(value = "recordLog()")
+    public void finnallyLog(JoinPoint joinPoint) {
+        Object target = joinPoint.getTarget();
+        logger = LoggerFactory.getLogger(target.getClass());
+        logger.info("最终通知。。。。");
+    }
+
+    //异常通知
+    @AfterThrowing(value = "recordLog()",throwing="e")
+    public void throwLog(JoinPoint joinPoint,Exception e) {
+        saveLog(joinPoint);
+        logger.info("异常通知。。。。,异常信息："+e.getMessage());
+    }
+
+    public void saveLog(JoinPoint joinPoint) {
         TbLog tbLog = new TbLog();
         Object target = joinPoint.getTarget();
         logger = LoggerFactory.getLogger(target.getClass());
@@ -66,22 +86,5 @@ public class LogAspect {
             tbLog.setLogOperType(OperType.UPDATE.getCode());
         }
         tbLogService.insert(tbLog);
-        logger.info(name+"后置通知。。。。，返回值："+obj);
-    }
-
-    //最终通知
-    @After(value = "recordLog()")
-    public void finnallyLog(JoinPoint joinPoint) {
-        Object target = joinPoint.getTarget();
-        logger = LoggerFactory.getLogger(target.getClass());
-        logger.info("最终通知。。。。");
-    }
-
-    //异常通知
-    @AfterThrowing(value = "recordLog()",throwing="e")
-    public void throwLog(JoinPoint joinPoint,Exception e) {
-        Object target = joinPoint.getTarget();
-        logger = LoggerFactory.getLogger(target.getClass());
-        logger.info("异常通知。。。。,异常信息："+e.getMessage());
     }
 }

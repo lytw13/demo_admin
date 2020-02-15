@@ -11,6 +11,7 @@ public class MyWebConfig implements WebMvcConfigurer {
         registry.addViewController("loginPage").setViewName("login");
         registry.addViewController("registPage").setViewName("regist");
         registry.addViewController("/user/listPage").setViewName("user/userList");
+        registry.addViewController("/user/avatar").setViewName("user/avatar");
         registry.addViewController("/menu/listPage").setViewName("menu/menuList");
         registry.addViewController("/role/listPage").setViewName("role/roleList");
         registry.addViewController("/role/addPage").setViewName("role/roleAddForm");

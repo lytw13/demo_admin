@@ -31,4 +31,7 @@ public interface UserService {
     @PostMapping("/updateTbUser")
     public BaseResult updateUser(@RequestBody TbUser tbUser);
 
+    BaseResult getTotal();
+
+    BaseResult updateByName(TbUser user);
 }

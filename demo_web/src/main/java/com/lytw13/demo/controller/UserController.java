@@ -8,19 +8,27 @@ import com.lytw13.demo.service.RoleService;
 import com.lytw13.demo.service.UserDeptService;
 import com.lytw13.demo.service.UserRoleService;
 import com.lytw13.demo.service.UserService;
+import com.lytw13.demo.utils.UploadFileUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -167,4 +175,25 @@ public class UserController {
         return 1;
     }
 
+
+    @PostMapping("getTotal")
+    @ResponseBody
+    public Integer getTotal() {
+        BaseResult result = userService.getTotal();
+        if(result.getResultCode()!=200) {
+            return 0;
+        }
+        return (Integer) result.getResultData();
+    }
+
+    @PostMapping(value = "changeIcon")
+    public String changeIcon(MultipartFile file,TbUser user) {
+        UploadFileUtil.upload(file);
+        String filename = file.getOriginalFilename();
+        String name = SecurityUtils.getSubject().getPrincipal().toString();
+        user.setName(name);
+        user.setIcon("/img/" + filename);
+        userService.updateByName(user);
+        return "success";
+    }
 }

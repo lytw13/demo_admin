@@ -131,7 +131,7 @@
                 <if test="password != null and password!= ''">
                     user_password = #{password,jdbcType=VARCHAR},
                 </if>
-                <if test="sex != null and sex!= ''">
+                <if test="sex != null">
                     user_sex = #{sex,jdbcType=INTEGER},
                 </if>
                 <if test="icon != null and icon!= ''">
@@ -223,5 +223,14 @@
     <update id="update" parameterType="com.lytw13.demo.model.TbUser">
         update tb_user set  user_status = #{status,jdbcType=INTEGER} where user_id=#{id,jdbcType=INTEGER}
     </update>
+
+    <update id="updateByName" parameterType="com.lytw13.demo.model.TbUser">
+        update tb_user set  user_icon = #{icon,jdbcType=VARCHAR} where user_name=#{name,jdbcType=VARCHAR}
+    </update>
+
+    <select id="account" resultType="java.lang.Integer" >
+        select count(*)
+        from tb_user
+    </select>
 
 </mapper>

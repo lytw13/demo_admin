@@ -151,4 +151,22 @@ public class UserServiceImpl implements UserService {
         return new ResponseResult().setResultSuccess("更新成功");
     }
 
+    @Override
+    public BaseResult getTotal() {
+        Integer result = userMapper.account();
+        if(result<0) {
+            return new ResponseResult().setResultFail("查询失败");
+        };
+        return new ResponseResult().setResultSuccess(result);
+    }
+
+    @Override
+    public BaseResult updateByName(TbUser user) {
+        Integer result =  userMapper.updateByName(user);
+        if(result == 0) {
+            return new ResponseResult().setResultFail("更新失败");
+        }
+        return new ResponseResult().setResultSuccess("更新成功");
+    }
+
 }

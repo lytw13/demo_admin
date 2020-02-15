@@ -39,7 +39,71 @@
 		    </section>
           	
 				<section class="content" style="margin-top:30px">
-					 <div id="main" style="width: 50%;height:480px;"></div>
+					<!-- Small boxes (Stat box) -->
+					<div class="row">
+						<div class="col-lg-3 col-xs-6">
+							<!-- small box -->
+							<div class="small-box bg-aqua">
+								<div class="inner">
+									<h3 id="userCount"></h3>
+
+									<p>网站用户数量</p>
+								</div>
+								<div class="icon">
+									<i class="ion ion-bag"></i>
+								</div>
+								<a th:href="@{/user/listPage}" class="small-box-footer">查看详情<i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+						<!-- ./col -->
+						<div class="col-lg-3 col-xs-6">
+							<!-- small box -->
+							<div class="small-box bg-green">
+								<div class="inner">
+									<h3>53<sup style="font-size: 20px">%</sup></h3>
+
+									<p>Bounce Rate</p>
+								</div>
+								<div class="icon">
+									<i class="ion ion-stats-bars"></i>
+								</div>
+								<a href="#" class="small-box-footer">查看更多<i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+						<!-- ./col -->
+						<div class="col-lg-3 col-xs-6">
+							<!-- small box -->
+							<div class="small-box bg-yellow">
+								<div class="inner">
+									<h3>44</h3>
+
+									<p>User Registrations</p>
+								</div>
+								<div class="icon">
+									<i class="ion ion-person-add"></i>
+								</div>
+								<a href="#" class="small-box-footer">查看更多<i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+						<!-- ./col -->
+						<div class="col-lg-3 col-xs-6">
+							<!-- small box -->
+							<div class="small-box bg-red">
+								<div class="inner">
+									<h3>65</h3>
+
+									<p>Unique Visitors</p>
+								</div>
+								<div class="icon">
+									<i class="ion ion-pie-graph"></i>
+								</div>
+								<a href="#" class="small-box-footer">查看更多<i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+						<!-- ./col -->
+					</div>
+					<!-- /.row -->
+					 <div id="main" style="width: 50%;height:200px;"></div>
 						<h2 style="text-align: center">lytw13公告</h2>
 					 	<ol id="noticeList">
 					 	</ol>
@@ -68,7 +132,6 @@
 				url: "/notice/showNotice",
 				type: "post",
 				success: function(data) {
-					// alert(data);
 					openNotice(data);
 				}
 			});
@@ -82,6 +145,14 @@
 				        content: data.content
 				    });
 			}
+
+			$.ajax({
+				url: "/user/getTotal",
+				type: "post",
+				success: function(data) {
+					$("#userCount").text(data);
+				}
+			});
 
     		var arr=[];
     		$.ajax({
@@ -97,7 +168,7 @@
           		});
           	   }
           	 });
-    	 alert(arr);
+    	 // alert(arr);
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 

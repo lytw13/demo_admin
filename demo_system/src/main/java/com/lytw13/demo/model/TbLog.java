@@ -29,5 +29,7 @@ public class TbLog implements Serializable {
     private Long logOperConsume;
     
     private Date logOperDate;
+    
+    private Integer logStatus;
 
 }

@@ -16,8 +16,6 @@
     <!-- 默认样式表-->
     <link rel="stylesheet" th:href="@{/css/AdminLTE.css}">
     <link rel="stylesheet" th:href="@{/css/skins/skin-blue.min.css}">
-	<!-- 文件上传插件 -->
-   <link rel="stylesheet" th:href="@{/css/webuploader/webuploader.css}">
     	<!-- 自定义样式-->
     <link rel="stylesheet" th:href="@{/css/customer/custom.css}">
     
@@ -47,7 +45,7 @@
 			               </div>
 			               <div class="ibox-content">
 			                   <div class="text-center">
-			                       <p><img th:src="@{/img/user3-128x128.jpg}" alt="..." class="img-fluid rounded-circle" ></p>
+			                       <p><img th:src="@{/img/user3-128x128.jpg}" class="img-fluid rounded-circle" ></p>
 			                       <p><button id="changeIcon">修改头像</button></p>
 			                   </div>
 			                   <ul class="list-group list-group-striped">
@@ -90,7 +88,7 @@
                         <div class="tab-content">
                             <!--用户信息-->
                             <div class="tab-pane active" id="user_info">
-                                <form class="form-horizontal" id="myForm" th:action="@{/user/updateUser}" method="post">
+                                <form class="form-horizontal" id="myForm" th:action="@{/user/update}" method="post">
                                     <!--隐藏ID-->
                                     <input name="id" type="hidden" th:value="${tbUser.id}">
                                     <div class="form-group">
@@ -147,7 +145,7 @@
                             
                             <!--修改密码-->
                             <div class="tab-pane" id="modify_password">
-                                <form class="form-horizontal" id="myForm1" method="post" th:action="@{/user/updateUser}">
+                                <form class="form-horizontal" id="myForm1" method="post" th:action="@{/user/update}">
                                 
                                   	<!--隐藏ID-->
                                     <input name="id" type="hidden" th:value="${tbUser.id}" id="id">
@@ -203,15 +201,15 @@
 	
 	 <!-- layer弹框插件 -->
     <script th:src="@{/js/layer/layer.js}"></script>
-    
-    <script th:src="@{/js/webuploader/webuploader.min.js}"></script>
 
 	
 	<!-- 表单验证 -->
 	<script type="text/javascript">
+        var param;
 	$(document).ready(function() {
 		
 		$("#changeIcon").click(function() {
+		    param = $("#id").val();
 			layer.open({
 		    	  type: 2,
 		    	  area: ['700px', '450px'],
