@@ -1,5 +1,7 @@
 package com.lytw13.demo.config;
 
+import org.quartz.Scheduler;
+import org.quartz.SchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -25,10 +27,25 @@ public class ScheduleConfig {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         factory.setDataSource(dataSource2);
 
-        //读取quartz参数，并设置
+        //quartz参数
         Properties prop = new Properties();
-        InputStream in = Object.class.getResourceAsStream("/quartz.properties");
-        prop.load(in);
+        prop.put("org.quartz.scheduler.instanceName", "MyScheduler");
+        prop.put("org.quartz.scheduler.instanceId", "AUTO");
+        //线程池配置
+        prop.put("org.quartz.threadPool.class", "org.quartz.simpl.SimpleThreadPool");
+        prop.put("org.quartz.threadPool.threadCount", "20");
+        prop.put("org.quartz.threadPool.threadPriority", "5");
+        //JobStore配置
+        prop.put("org.quartz.jobStore.class", "org.quartz.impl.jdbcjobstore.JobStoreTX");
+        //集群配置
+        prop.put("org.quartz.jobStore.isClustered", "true");
+        prop.put("org.quartz.jobStore.clusterCheckinInterval", "15000");
+        prop.put("org.quartz.jobStore.maxMisfiresToHandleAtATime", "1");
+
+        prop.put("org.quartz.jobStore.misfireThreshold", "12000");
+        prop.put("org.quartz.jobStore.tablePrefix", "QRTZ_");
+        prop.put("org.quartz.jobStore.selectWithLockSQL", "SELECT * FROM {0}LOCKS UPDLOCK WHERE LOCK_NAME = ?");
+
         factory.setQuartzProperties(prop);
 
         factory.setSchedulerName("MyScheduler");

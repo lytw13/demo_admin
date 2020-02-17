@@ -3,10 +3,12 @@
 #
 # PLEASE consider using mysql with innodb tables to avoid locking issues
 #
-# In your Quartz properties file, you'll need to set
+# In your Quartz properties file, you''ll need to set
 # org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.StdJDBCDelegate
 #
 
+CREATE DATABASE db_quarz;
+USE db_quarz;
 DROP TABLE IF EXISTS QRTZ_FIRED_TRIGGERS;
 DROP TABLE IF EXISTS QRTZ_PAUSED_TRIGGER_GRPS;
 DROP TABLE IF EXISTS QRTZ_SCHEDULER_STATE;
@@ -169,18 +171,13 @@ CREATE TABLE QRTZ_LOCKS
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_job`;
 CREATE TABLE `tb_job` (
-  `job_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务ID',
-  `job_name` varchar(64) NOT NULL DEFAULT '' COMMENT '任务名称',
-  `job_invokeMethod` varchar(500) NOT NULL COMMENT '调用目标字符串',
-  `job_cron` varchar(255) DEFAULT '' COMMENT 'cron执行表达式',
-  `job_status` char(1) DEFAULT '0' COMMENT '状态（0正常 1暂停）',
-  `job_createDate` datetime DEFAULT NULL COMMENT '创建时间',
+  `job_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT ''任务ID'',
+  `job_name` varchar(64) NOT NULL DEFAULT '''' COMMENT ''任务名称'',
+  `job_invokeMethod` varchar(500) NOT NULL COMMENT ''调用目标字符串'',
+  `job_cron` varchar(255) DEFAULT '''' COMMENT ''cron执行表达式'',
+  `job_status` INT DEFAULT 1 COMMENT ''状态（0正常 1暂停）'',
+  `job_createDate` datetime DEFAULT NULL COMMENT ''创建时间'',
   PRIMARY KEY (`job_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='定时任务调度表';
-
--- ----------------------------
--- Records of tb_job
--- ----------------------------
-INSERT INTO `tb_job` VALUES ('1', 'demo', 'TbJobController.selectOne', '0/30 * * * * ?', '1', '2020-02-13 23:40:46');
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT=''定时任务调度表'';
 
 commit;

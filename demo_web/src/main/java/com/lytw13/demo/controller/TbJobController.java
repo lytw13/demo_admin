@@ -54,15 +54,15 @@ public class TbJobController {
     @ResponseBody
     @GetMapping("selectOne")
     public TbJob selectOne(Integer id) {
-        System.out.println("查询一个selectOne================");
+        System.out.println("selectOne================");
         return tbJobController.tbJobService.queryById(id);
     }
 
     @ResponseBody
     @GetMapping("selectAll")
-    public List<TbJob> selectAll() {
-        System.out.println("查询所有================");
-        return tbJobController.tbJobService.queryAllByLimit(0,5);
+    public TbJob selectAll(Integer id) {
+        System.out.println("selectAll================");
+        return tbJobController.tbJobService.queryById(id);
     }
 
     @GetMapping(value="listJob")
@@ -109,7 +109,7 @@ public class TbJobController {
 
     @GetMapping("pause")
     public String pause(Model model,TbJob tbJob) {
-        tbJob.setJobStatus("0");
+        tbJob.setJobStatus(0);
         BaseResult result = tbJobService.pause(tbJob);
         if(result.getResultCode()!= 200) {
             model.addAttribute("message",result.getResultMsg());
@@ -139,7 +139,7 @@ public class TbJobController {
 
     @GetMapping("resume")
     public String resume(Model model,TbJob tbJob) {
-        tbJob.setJobStatus("1");
+        tbJob.setJobStatus(1);
         BaseResult result = tbJobService.resume(tbJob);
         if(result.getResultCode()!= 200) {
             model.addAttribute("message",result.getResultMsg());

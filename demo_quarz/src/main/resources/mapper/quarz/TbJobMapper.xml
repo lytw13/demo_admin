@@ -7,7 +7,7 @@
         <result property="jobName" column="job_name" jdbcType="VARCHAR"/>
         <result property="jobInvokemethod" column="job_invokeMethod" jdbcType="VARCHAR"/>
         <result property="jobCron" column="job_cron" jdbcType="VARCHAR"/>
-        <result property="jobStatus" column="job_status" jdbcType="VARCHAR"/>
+        <result property="jobStatus" column="job_status" jdbcType="INTEGER"/>
         <result property="jobCreatedate" column="job_createDate" jdbcType="TIMESTAMP"/>
     </resultMap>
 
@@ -45,7 +45,7 @@
             <if test="jobCron != null and jobCron != ''">
                 and job_cron = #{jobCron}
             </if>
-            <if test="jobStatus != null and jobStatus != ''">
+            <if test="jobStatus != null">
                 and job_status = #{jobStatus}
             </if>
             <if test="jobCreatedate != null">
@@ -108,7 +108,7 @@
             <if test="jobCron != null and jobCron != ''">
                 job_cron = #{jobCron},
             </if>
-            <if test="jobStatus != null and jobStatus != ''">
+            <if test="jobStatus != null">
                 job_status = #{jobStatus},
             </if>
             <if test="jobCreatedate != null">

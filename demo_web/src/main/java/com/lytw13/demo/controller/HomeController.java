@@ -24,7 +24,6 @@ public class HomeController {
 
     @Autowired
     UserService userService;
-    List list = new ArrayList<>();
 
     @GetMapping(value = "index")
     public String index(HttpSession session) {

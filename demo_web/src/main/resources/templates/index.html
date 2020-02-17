@@ -103,10 +103,60 @@
 						<!-- ./col -->
 					</div>
 					<!-- /.row -->
-					 <div id="main" style="width: 50%;height:200px;"></div>
-						<h2 style="text-align: center">lytw13公告</h2>
-					 	<ol id="noticeList">
-					 	</ol>
+					<hr/>
+					<div class="row">
+					<div class="col-sm-4">
+						<h2>lytw13介绍</h2>
+						<br/>
+						<p>只是为了自己练手，将所学的知识运用起来。</p>
+						<p>
+							<b>当前版本：</b><span>v0.0.1</span>
+						</p>
+						<br>
+						<p>
+							<a class="btn btn-white btn-bitbucket" href="https://github.com/lytw13/demo_admin" target="_blank">
+								<i class="fa fa-home"></i> 访问github源码
+							</a>
+							<a class="btn btn-white btn-bitbucket" href="https://lytw13.top" target="_blank">
+								<i class="fa fa-home"></i> 访问个人博客
+							</a>
+						</p>
+					</div>
+					<div class="col-sm-4">
+							<h3>大致介绍：</h3>
+							<br/>
+							<p>通过shiro来实现用户权限的控制，使用jquery进行交互，使用Thymeleaf进行
+							页面的加载，通过aop实现日志的记录，使用quartz实现定时任务的集成，以及简单的
+							整合swagger页面进行测试。
+							</p>
+					</div>
+					<div class="col-sm-4">
+						<h3>技术选型：</h3>
+						<br/>
+						<ol>
+							<li>核心框架：Spring Boot</li>
+							<li>安全框架：Apache Shiro</li>
+							<li>交互框架：jquery</li>
+							<li>模板引擎：Thymeleaf</li>
+							<li>持久层框架：MyBatis</li>
+							<li>定时任务:springschedule</li>
+							<li>定时任务:Quartz</li>
+							<li>数据库连接池：Druid</li>
+							<li>系统接口： swagger</li>
+							<li>待完善。。。</li>
+						</ol>
+					</div>
+					</div>
+					<br/>
+					<hr/>
+					<div id="main" style="width: 50%;height:200px;" class="col-sm-6"></div>
+
+
+					<div class="col-sm-6">
+<!--						<h2 style="text-align: center">lytw13公告</h2>-->
+<!--					 	<ol id="noticeList">-->
+<!--					 	</ol>-->
+					</div>
 				</section>
 			</div>
 			
@@ -153,22 +203,9 @@
 					$("#userCount").text(data);
 				}
 			});
+		//保存后台获取的数据
+    	var arr=[];
 
-    		var arr=[];
-    		$.ajax({
-          	   url: "/user/totalBySex",
-          	   type: "post",
-          	   success: function(data) {
-          		var json = eval(data);
-          		$.each(json,function(key,value){
-          			var obj = new Object();
-          			obj.value = value;
-          			obj.name = key;
-          			arr.push(obj);
-          		});
-          	   }
-          	 });
-    	 // alert(arr);
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 
@@ -192,7 +229,7 @@
         			            type: 'pie',
         			            radius : '60%',  //大小可以理解为
         			            center: ['50%', '60%'],  //第一项是相对于容器宽度，第二项是相对于容器高度。
-        			            data:arr,
+        			            data:[],
         			            itemStyle: {
         			                emphasis: {
         			                    shadowBlur: 10,
@@ -205,22 +242,42 @@
         			};
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
+
+			$.ajax({
+				url: "/user/totalBySex",
+				type: "post",
+				success: function(data) {
+					var json = eval(data);
+					$.each(json,function(key,value){
+						var obj = new Object();
+						obj.value = value;
+						obj.name = key;
+						arr.push(obj);
+					});
+					myChart.setOption({
+						series: [{
+							// 根据名字对应到相应的系列
+							data: arr
+						}]
+					});
+				}
+			});
         myChart.on("click", function(params) {
         	console.log(params.name);
         	window.location.href="/user/listPage";
         });
         var notices=[];
-        $.ajax({
-       	   url: "/notice/list",
-       	   type: "post",
-       	   success: function(data) {
-       		var json = eval(data);
-       		$.each(json,function(key,value){
-				$("#noticeList").append("<li value='"+ value.name+"'>"+value.content+"</li>");
-
-      		})
-       	   }
-       	 });
+        // $.ajax({
+       	//    url: "/notice/list",
+       	//    type: "post",
+       	//    success: function(data) {
+       	// 	var json = eval(data);
+       	// 	$.each(json,function(key,value){
+		// 		$("#noticeList").append("<li value='"+ value.name+"'>"+value.content+"</li>");
+		//
+      	// 	})
+       	//    }
+       	//  });
         
         
     	});

@@ -32,7 +32,7 @@ public class TbJob implements Serializable {
     /**
     * 状态（0正常 1暂停）
     */
-    private String jobStatus;
+    private Integer jobStatus;
     /**
     * 创建时间
     */

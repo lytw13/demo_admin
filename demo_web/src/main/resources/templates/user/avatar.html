@@ -17,8 +17,6 @@
 		 $("#id").val(parent.param);
 		 $("#submitHandler").on("click", function(){
 			 var formData = new FormData();
-			 // var file = $('#file')[0].files[0];
-			 // formData.append('file', file); // 固定格式
 			 formData.append('file', $('#file')[0].files[0]);
 			 $.ajax({
 				 cache : true,
@@ -34,10 +32,6 @@
 					 window.parent.location.reload();
 				 },
 				 error: function(data) {
-					 console.log(data);
-					 var index = parent.layer.getFrameIndex(window.name); //获取当前窗口index
-					 parent.layer.close(index);
-					 window.parent.location.reload();
 				 }
 			 });
 		 });

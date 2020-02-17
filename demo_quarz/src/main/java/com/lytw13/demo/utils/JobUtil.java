@@ -25,9 +25,9 @@ public class JobUtil {
         JobDetail jobDetail = JobBuilder.newJob(MyJob.class).withIdentity(jobKey).build();
 
         jobDetail.getJobDataMap().put("INVORK_METHOD", tbJob);
-        //表达式调度构建器(即任务执行的时间,不立即执行)
-        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(tbJob.getJobCron()).withMisfireHandlingInstructionFireAndProceed();
 
+        //无论错过多少次，均忽略，后续的执行仍按照原规律进行执行
+        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(tbJob.getJobCron()).withMisfireHandlingInstructionFireAndProceed();
         //按新的cronExpression表达式构建一个新的trigger
         CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(tbJob.getJobName(), "default").startAt(new Date())
                 .withSchedule(scheduleBuilder).build();
